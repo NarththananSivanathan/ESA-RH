@@ -80,15 +80,4 @@ select {
     color: #fff;
 }
 
-footer {
-    background-color: #ff4d4d;
-    color: #fff;
-    padding: 40px 0;
-    text-align: center;
-}
 
-footer p {
-    font-size: 16px;
-    margin: 0;
-    padding: 50px 0;
-}
