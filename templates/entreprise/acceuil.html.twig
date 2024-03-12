@@ -1,0 +1,140 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil-entreprise{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('assets/css/accueil-entreprise.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+{% include 'boutDeCode/_navBar.html.twig' %}
+    
+    <main class="flex-shrink-0">
+    
+        <div class="container-fluid mb-4">       
+            <div class="container">           
+                <div class="row">          
+                    <div class="col-md-12 d-flex align-items-center"> 
+                        <div class="profile-image">
+                            <img src="{{asset('assets/images/Profil.png')}}" alt="Profil" style="width: 100px;">
+                            <p>Nom du recruteur</p>
+                        </div>
+                        <div class="profile-info ms-3">
+                            <h6>Espace</h6>
+                            <u><p>Recruteur</p></u>
+                            <p>Nom de l'entreprise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section>
+            <div class="container">
+                <div class="mb-4 d-flex justify-content-end">
+                    <button type="button" class="btn btn-dark">Créer une offre</button>
+                </div>
+                <div class="row mb-5">            
+                    <div class="col-md-12">
+                        <div class="card" id="card-offre">
+                            <div class="card-header">
+                                <h4 class="card-titre"><i class="fas fa-briefcase me-3"></i>Mes offres</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="">
+                                    <div data-bs-toggle="collapse" data-bs-target="#collapseEnLigne" role="button" aria-expanded="true" aria-controls="collapseEnLigne" class="collapse-toggle">
+                                        <span class="number me-2">(0)</span> <span class="choix">Offres publiées</span> <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div id="collapseEnLigne" class="collapse">
+                                        <table aria-describedby="offres en ligne" class="table table-hover">
+                                            <tr>
+                                                <td>Poste</td>
+                                                <td>Type Contrat</td>
+                                                <td>Date de publication</td>
+                                                <td>Localisation</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="mt-2">
+                                    <div data-bs-toggle="collapse" data-bs-target="#collapseBrouillon" role="button" aria-expanded="true" aria-controls="collapseEnLigne" class="collapse-toggle">
+                                        <span class="number me-2">(0)</span> <span class="choix">Brouillon </span><i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div id="collapseBrouillon" class="collapse">
+                                        <table aria-describedby="offres en ligne" class="table table-hover">
+                                            <tr>
+                                                <td>Poste</td>
+                                                <td>Type Contrat</td>
+                                                <td>Date de publication</td>
+                                                <td>Localisation</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="#" class="footer-link">Voir toutes les offres</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">            
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-titre"><i class="fas fa-search me-3"></i>Mes recherches</h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table">
+                                    <tr>
+                                        <td>Nom recherche</td>
+                                        <td>Nombre de candidats</td>
+                                        <td><a href="#"><i class="fas fa-pen" style="color: black;"></i></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="#" class="footer-link">Voir toutes mes recherches</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">            
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-titre"><i class="fas fa-info-circle me-3"></i>Mon entreprise</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="info mb-10">Société :</div>
+                                            <p> 
+                                                STYLE ET INTERIEUR <br> 
+                                                SIRET 834937559 00013 <br> 
+                                                NAF 4791A ET VENTE À DISTANCE SUR CATALOGUE GÉNÉRAL 
+                                            </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info mb-10">Adresse :</div>
+                                            <p> 
+                                                82 B AVENUE DES BOULEAUX <br> 
+                                                91170 VIRY-CHATILLON 
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+{% include 'boutDeCode/_footer.html.twig' %}
+
+{% endblock %}
