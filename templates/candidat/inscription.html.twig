@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription-Candidat{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style-form-inscription.css') }}">
+{% endblock %}
+
+{% block body %}
+
     <nav>
         <div class="container">
             <div class="logo">Inscription</div>
@@ -65,9 +67,13 @@
         </form>
     </div>
     <br>
+
+
+
     {% include 'boutDeCode/_footer.html.twig' %}
-</body>
-</html>
+
+{% endblock %}
+
 
 
 
