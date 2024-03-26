@@ -2,77 +2,79 @@
 
 {% block title %}Inscription-Candidat{% endblock %}
 
-{% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('assets/css/style-form-inscription.css') }}">
-{% endblock %}
-
 {% block body %}
 
-    <nav>
-        <div class="container">
-            <div class="logo">Inscription</div>
-        </div>
-    </nav>
-    <div class="container">
-        <form action="#" method="POST" class="inscription-form">
-            <div class="form-group">
-                <label for="civilite">Civilité:</label>
-                <select name="civilite" id="civilite">
-                    <option value="monsieur">Monsieur</option>
-                    <option value="madame">Madame</option>
-                    <option value="madame">Autre...</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="prenom">Prénom:</label>
-                <input type="text" id="prenom" name="prenom" required>
-            </div>
-            <div class="form-group">
-                <label for="nom">Nom:</label>
-                <input type="text" id="nom" name="nom" required>
-            </div>
-            <div class="form-group">
-                <label for="telephone">Téléphone:</label>
-                <input type="tel" id="telephone" name="telephone" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="motdepasse">Mot de passe:</label>
-                <input type="password" id="motdepasse" name="motdepasse" required>
-            </div>
-            <div class="form-group">
-                <label for="confirmation">Confirmation:</label>
-                <input type="password" id="confirmation" name="confirmation" required>
-            </div>
-            <div class="form-group">
-                <label for="pays">Pays:</label>
-                <input type="text" id="pays" name="pays" required>
-            </div>
-            <div class="form-group">
-                <label for="codepostal">Code Postal:</label>
-                <input type="text" id="codepostal" name="codepostal" required>
-            </div>
-            <div class="form-group">
-                <label for="ville">Ville:</label>
-                <input type="text" id="ville" name="ville" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn valider">Valider</button>
-                <button type="button" class="btn annuler">Annuler</button>
-            </div>
-            <div class="connexion-link">Vous avez déjà un compte ? <a href="#" class="connecter">Se connecter</a></div>
-        </form>
+    <div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #ff0000;">
+        <h1 class="text-center fs-1 fs-md-2 fs-lg-3 fs-xl-4 fw-bold">Inscription Candidat</h1>
     </div>
-    <br>
 
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 col-md-9 col-lg-8 mx-auto"> <!-- Ajustement pour un formulaire plus large -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <form action="#" method="POST">
+                        <!-- Vos champs de formulaire ici -->
+                        <div class="mb-3">
+                            <label for="civilite" class="form-label">Civilité:</label>
+                            <select name="civilite" id="civilite" class="form-select">
+                                <option value="monsieur">Monsieur</option>
+                                <option value="madame">Madame</option>
+                                <option value="autre">Autre...</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="prenom" class="form-label">Prenom:</label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nom" class="form-label">Nom:</label>
+                            <input type="text" class="form-control" id="nom" name="nom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephone" class="form-label">Téléphone:</label>
+                            <input type="tel" class="form-control" id="telephone" name="telephone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="motdepasse" class="form-label">Mot de passe:</label>
+                            <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmation" class="form-label">Confirmation:</label>
+                            <input type="password" class="form-control" id="confirmation" name="confirmation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pays" class="form-label">Pays:</label>
+                            <input type="text" class="form-control" id="pays" name="pays" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codepostal" class="form-label">Code Postal:</label>
+                            <input type="text" class="form-control" id="codepostal" name="codepostal" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="ville" class="form-label">Ville:</label>
+                            <input type="text" class="form-control" id="ville" name="ville" required>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn-valider me-3">Valider</button>
+                            <button type="button" class="btn-annuler btn-mg">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
 
+        <div class="text-center">
+            Vous avez déjà un compte ? <a href="#" class="link-danger">Se connecter</a>
+        </div>
+    </div>
 
     {% include 'boutDeCode/_footer.html.twig' %}
-
 {% endblock %}
+
 
 
 
