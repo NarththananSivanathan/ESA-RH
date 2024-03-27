@@ -20,19 +20,19 @@ class Entreprise
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $secteur_activite = null;
+    private ?string $siret = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $num_siret = null;
+    private ?string $code_naf = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    #[ORM\Column(length: 255)]
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $statut_compte = null;
+    private ?string $telephone2 = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $adresse = null;
+    private ?string $description = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Utilisateur $idUtilisateur = null;
@@ -62,26 +62,50 @@ class Entreprise
         return $this;
     }
 
-    public function getSecteurActivite(): ?string
+    public function getSiret(): ?string
     {
-        return $this->secteur_activite;
+        return $this->siret;
     }
 
-    public function setSecteurActivite(string $secteur_activite): static
+    public function setSiret(string $siret): static
     {
-        $this->secteur_activite = $secteur_activite;
+        $this->siret = $siret;
 
         return $this;
     }
 
-    public function getNumSiret(): ?string
+    public function getCodeNaf(): ?string
     {
-        return $this->num_siret;
+        return $this->code_naf;
     }
 
-    public function setNumSiret(string $num_siret): static
+    public function setCodeNaf(string $code_naf): static
     {
-        $this->num_siret = $num_siret;
+        $this->code_naf = $code_naf;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(string $telephone): static
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getTelephone2(): ?string
+    {
+        return $this->telephone2;
+    }
+
+    public function setTelephone2(?string $telephone2): static
+    {
+        $this->telephone2 = $telephone2;
 
         return $this;
     }
@@ -91,33 +115,9 @@ class Entreprise
         return $this->description;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getStatutCompte(): ?string
-    {
-        return $this->statut_compte;
-    }
-
-    public function setStatutCompte(?string $statut_compte): static
-    {
-        $this->statut_compte = $statut_compte;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->adresse;
-    }
-
-    public function setAdresse(string $adresse): static
-    {
-        $this->adresse = $adresse;
 
         return $this;
     }
