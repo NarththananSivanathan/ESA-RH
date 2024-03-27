@@ -25,3 +25,7 @@
     background-color: #000000;
     color: #ffffff;
 }
+
+.required {
+    color: #ff0000;
+}
