@@ -2,7 +2,17 @@
 
 namespace App\Controller\entreprise;
 
-class CreeOffreController
-{
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
+class CreeOffreController extends AbstractController
+{
+    #[Route('/{id_entreprise}/cree-offre', name: 'cree-offre')]
+    public function index(): Response
+    {
+        return $this->render(view: 'entreprise/creeOffre.html.twig', parameters: [
+
+        ]);
+    }
 }
