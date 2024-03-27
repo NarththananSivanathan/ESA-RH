@@ -14,13 +14,13 @@ class Utilisateur
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $civilite = null;
 
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $civilite = null;
+    private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -28,22 +28,22 @@ class Utilisateur
     #[ORM\Column(length: 255)]
     private ?string $mot_de_passe = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $type = null;
+    #[ORM\ManyToOne(inversedBy: 'idUtilisateur')]
+    private ?Adresse $adresse = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getCivilite(): ?string
     {
-        return $this->nom;
+        return $this->civilite;
     }
 
-    public function setNom(string $nom): static
+    public function setCivilite(string $civilite): static
     {
-        $this->nom = $nom;
+        $this->civilite = $civilite;
 
         return $this;
     }
@@ -60,14 +60,14 @@ class Utilisateur
         return $this;
     }
 
-    public function getCivilite(): ?string
+    public function getNom(): ?string
     {
-        return $this->civilite;
+        return $this->nom;
     }
 
-    public function setCivilite(string $civilite): static
+    public function setNom(string $nom): static
     {
-        $this->civilite = $civilite;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -96,14 +96,14 @@ class Utilisateur
         return $this;
     }
 
-    public function getType(): ?string
+    public function getAdresse(): ?Adresse
     {
-        return $this->type;
+        return $this->adresse;
     }
 
-    public function setType(string $type): static
+    public function setAdresse(?Adresse $adresse): static
     {
-        $this->type = $type;
+        $this->adresse = $adresse;
 
         return $this;
     }

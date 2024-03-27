@@ -16,13 +16,13 @@ class Candidat
     private ?int $id = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    private ?string $telephone = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $CV = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $lettre_motivation = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $profession = null;
+    private ?string $lettre_de_motivation = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Utilisateur $idUtilisateur = null;
@@ -30,17 +30,26 @@ class Candidat
     #[ORM\OneToMany(targetEntity: Candidature::class, mappedBy: 'idCandidat')]
     private Collection $candidatures;
 
-
     public function __construct()
     {
-        $this->offres = new ArrayCollection();
-        $this->idOffre = new ArrayCollection();
         $this->candidatures = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): static
+    {
+        $this->telephone = $telephone;
+
+        return $this;
     }
 
     public function getCV(): ?string
@@ -55,26 +64,14 @@ class Candidat
         return $this;
     }
 
-    public function getLettreMotivation(): ?string
+    public function getLettreDeMotivation(): ?string
     {
-        return $this->lettre_motivation;
+        return $this->lettre_de_motivation;
     }
 
-    public function setLettreMotivation(?string $lettre_motivation): static
+    public function setLettreDeMotivation(?string $lettre_de_motivation): static
     {
-        $this->lettre_motivation = $lettre_motivation;
-
-        return $this;
-    }
-
-    public function getProfession(): ?string
-    {
-        return $this->profession;
-    }
-
-    public function setProfession(string $profession): static
-    {
-        $this->profession = $profession;
+        $this->lettre_de_motivation = $lettre_de_motivation;
 
         return $this;
     }
@@ -87,75 +84,6 @@ class Candidat
     public function setIdUtilisateur(?Utilisateur $idUtilisateur): static
     {
         $this->idUtilisateur = $idUtilisateur;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Offre>
-     */
-    public function getOffres(): Collection
-    {
-        return $this->offres;
-    }
-
-    public function addOffre(Offre $offre): static
-    {
-        if (!$this->offres->contains($offre)) {
-            $this->offres->add($offre);
-            $offre->addIdCandidat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOffre(Offre $offre): static
-    {
-        if ($this->offres->removeElement($offre)) {
-            $offre->removeIdCandidat($this);
-        }
-
-        return $this;
-    }
-
-    public function getOffre(): ?Offre
-    {
-        return $this->offre;
-    }
-
-    public function setOffre(?Offre $offre): static
-    {
-        $this->offre = $offre;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Offre>
-     */
-    public function getIdOffre(): Collection
-    {
-        return $this->idOffre;
-    }
-
-    public function addIdOffre(Offre $idOffre): static
-    {
-        if (!$this->idOffre->contains($idOffre)) {
-            $this->idOffre->add($idOffre);
-            $idOffre->setCandidat($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdOffre(Offre $idOffre): static
-    {
-        if ($this->idOffre->removeElement($idOffre)) {
-            // set the owning side to null (unless already changed)
-            if ($idOffre->getCandidat() === $this) {
-                $idOffre->setCandidat(null);
-            }
-        }
 
         return $this;
     }

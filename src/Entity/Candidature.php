@@ -13,18 +13,30 @@ class Candidature
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $statut_candidature = null;
+
     #[ORM\ManyToOne(inversedBy: 'candidatures')]
     private ?Offre $idOffre = null;
 
     #[ORM\ManyToOne(inversedBy: 'candidatures')]
     private ?Candidat $idCandidat = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $statut_candidature = null;
-
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getStatutCandidature(): ?string
+    {
+        return $this->statut_candidature;
+    }
+
+    public function setStatutCandidature(string $statut_candidature): static
+    {
+        $this->statut_candidature = $statut_candidature;
+
+        return $this;
     }
 
     public function getIdOffre(): ?Offre
@@ -47,18 +59,6 @@ class Candidature
     public function setIdCandidat(?Candidat $idCandidat): static
     {
         $this->idCandidat = $idCandidat;
-
-        return $this;
-    }
-
-    public function getStatutCandidature(): ?string
-    {
-        return $this->statut_candidature;
-    }
-
-    public function setStatutCandidature(string $statut_candidature): static
-    {
-        $this->statut_candidature = $statut_candidature;
 
         return $this;
     }
