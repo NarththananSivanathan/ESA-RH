@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #ff0000;">
+        <h1 class="text-center fs-1 fs-md-2 fs-lg-3 fs-xl-4 fw-bold">Connexion</h1>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 col-md-9 col-lg-8 mx-auto"> <!-- Ajustement pour un formulaire plus large -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <form action="#" method="POST">
+                        <div class="mb-3">
+                            <label for="email" class="form-group">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="motdepasse" class="form-group">Mot de passe:</label>
+                            <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn-valider me-3">Connextion</button>
+                        </div>
+                        <div class="text-center">
+                            <a href="#" class="link-danger">Mot Passe Oublié</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            Crée un compte ? <a href="#" class="link-danger">S'inscrire</a>
+        </div>
+    </div>
+
+    {% include 'boutDeCode/_footer.html.twig' %}
+{% endblock %}
+
+
+
+
+
+
