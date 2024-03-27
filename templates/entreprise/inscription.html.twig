@@ -15,7 +15,7 @@
                     <form action="#" method="POST">
                         <!-- Vos champs de formulaire ici -->
                         <div class="mb-3">
-                            <label for="civilite" class="form-group">Civilité:</label>
+                            <label for="civilite" class="form-group">Civilité :</label>
                             <select name="civilite" id="civilite" class="form-control">
                                 <option value="monsieur">Monsieur</option>
                                 <option value="madame">Madame</option>
@@ -23,42 +23,42 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="prenom" class="form-group">Prénom:</label>
+                            <label for="prenom" class="form-group">Prénom :</label>
                             <input type="text" class="form-control" id="prenom" name="prenom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="nom" class="form-group">Nom:</label>
+                            <label for="nom" class="form-group">Nom :</label>
                             <input type="text" class="form-control" id="nom" name="nom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="telephone" class="form-group">Téléphone:</label>
+                            <label for="telephone" class="form-group">Téléphone :</label>
                             <input type="tel" class="form-control" id="telephone" name="telephone" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-group">Email:</label>
+                            <label for="email" class="form-group">Email :</label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="motdepasse" class="form-group">Mot de passe:</label>
+                            <label for="motdepasse" class="form-group">Mot de passe :</label>
                             <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
                         </div>
                         <div class="mb-3">
-                            <label for="confirmation" class="form-group">Confirmation:</label>
+                            <label for="confirmation" class="form-group">Confirmation :</label>
                             <input type="password" class="form-control" id="confirmation" name="confirmation" required>
                         </div>
                         <div class="mb-3">
-                            <label for="fonction" class="form-group">Fonction dans l'entreprise:</label>
+                            <label for="fonction" class="form-group">Fonction dans l'entreprise :</label>
                             <select name="fonction" id="fonction" class="form-control">
                                 <option value="employe">Employé</option>
                                 <option value="directeur">Directeur</option>
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="tel2" class="form-group">Numéro de téléphone 2:</label>
-                            <input type="tel" class="form-control" id="tel2" name="tel2" required>
+                            <label for="tel2" class="form-group">Numéro de téléphone 2 :</label>
+                            <input type="tel" class="form-control" id="tel2" name="tel2">
                         </div>
                         <div class="mb-3">
-                            <label for="entreprise" class="form-group">Votre entreprise:</label>
+                            <label for="entreprise" class="form-group">Nom d'entreprise :</label>
                             <input type="text" class="form-control" id="entreprise" name="entreprise" required>
                         </div>
                         <div class="mb-3">
@@ -70,18 +70,29 @@
                             <input type="text" class="form-control" id="codeNAF" name="codeNAF" required>
                         </div>
                         <div class="mb-3">
-                            <label for="pays" class="form-group">Pays:</label>
-                            <input type="text" class="form-control" id="pays" name="pays" required>
+                            <label for="numero" class="form-label">Numéro :</label>
+                            <input type="text" class="form-control" id="numero" name="numero" required>
                         </div>
                         <div class="mb-3">
-                            <label for="codepostal" class="form-group">Code Postal:</label>
+                            <label for="adresse" class="form-label">Adresse :</label>
+                            <input type="text" class="form-control" id="adresse" name="adresse" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="codepostal" class="form-label">Code Postal :</label>
                             <input type="text" class="form-control" id="codepostal" name="codepostal" required>
                         </div>
                         <div class="mb-3">
-                            <label for="ville" class="form-group">Ville:</label>
+                            <label for="ville" class="form-label">Ville :</label>
                             <input type="text" class="form-control" id="ville" name="ville" required>
                         </div>
-
+                        <div class="mb-3">
+                            <label for="pays" class="form-label">Pays :</label>
+                            <input type="text" class="form-control" id="pays" name="pays" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description :</label>
+                            <textarea type="text" class="form-control" id="description" name="description" rows="4" required></textarea>
+                        </div>
                         <div class="d-flex align-items-center">
                             <button type="submit" class="btn-valider me-3">Valider</button>
                             <button type="button" class="btn-annuler btn-mg">Annuler</button>
