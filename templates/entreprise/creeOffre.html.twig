@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Crée une Offre{% endblock %}
+
+{% block body %}
+
+    <div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #ff0000;">
+        <h1 class="text-center fs-1 fs-md-2 fs-lg-3 fs-xl-4 fw-bold">Crée une Offre</h1>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 col-md-9 col-lg-8 mx-auto"> <!-- Ajustement pour un formulaire plus large -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+                    <form action="#" method="POST">
+                        <!-- Vos champs de formulaire ici -->
+                        <div class="mb-3">
+                            <label for="post" class="form-group">Titre du poste : <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="post" name="post" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="salaire" class="form-group">Salaire :</label>
+                            <input type="text" class="form-control" id="salaire" name="salaire">
+                        </div>
+                        <div class="mb-3">
+                            <label for="etude_min" class="form-group">Niveau d'étude minimum : <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="etude_min" name="etude_min" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exp_min" class="form-group">Année d'expérience minimum : <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="exp_min" name="exp_min" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contrat" class="form-group">Type de contrat : <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="contrat" name="contrat" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombre_heure" class="form-group">Nombre d'heure : <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="nombre_heure" name="nombre_heure" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description_post" class="form-group">Déscription général du post : <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" id="description_post" name="description_post" rows="6" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="competence_requis" class="form-group">Compétences pré requises : <span class="required">*</span></label>
+                            <textarea type="text" class="form-control" id="competence_requis" name="competence_requis" rows="6" required></textarea>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button type="submit" class="btn-valider me-3">Créer</button>
+                            <button type="button" class="btn-annuler btn-mg">Abandonner</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'boutDeCode/_footer.html.twig' %}
+{% endblock %}
+
+
+
+
+
+
