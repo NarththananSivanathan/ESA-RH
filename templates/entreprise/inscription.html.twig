@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #ff0000;">
+    <div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #D43A3A;">
         <h1 class="text-center fs-1 fs-md-2 fs-lg-3 fs-xl-4 fw-bold">Inscription Entreprise</h1>
     </div>
 
@@ -15,7 +15,7 @@
                     <form action="#" method="POST">
                         <!-- Vos champs de formulaire ici -->
                         <div class="mb-3">
-                            <label for="civilite" class="form-group">Civilité :</label>
+                            <label for="civilite" class="form-group">Civilité : <span class="required">*</span></label>
                             <select name="civilite" id="civilite" class="form-control">
                                 <option value="monsieur">Monsieur</option>
                                 <option value="madame">Madame</option>
@@ -23,31 +23,31 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="prenom" class="form-group">Prénom :</label>
-                            <input type="text" class="form-control" id="prenom" name="prenom" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="nom" class="form-group">Nom :</label>
+                            <label for="nom" class="form-group">Nom : <span class="required">*</span></label>
                             <input type="text" class="form-control" id="nom" name="nom" required>
                         </div>
                         <div class="mb-3">
-                            <label for="telephone" class="form-group">Téléphone :</label>
+                            <label for="prenom" class="form-group">Prénom : <span class="required">*</span></label>
+                            <input type="text" class="form-control" id="prenom" name="prenom" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephone" class="form-group">Téléphone : <span class="required">*</span></label>
                             <input type="tel" class="form-control" id="telephone" name="telephone" required>
                         </div>
                         <div class="mb-3">
-                            <label for="email" class="form-group">Email :</label>
+                            <label for="email" class="form-group">Email : <span class="required">*</span></label>
                             <input type="email" class="form-control" id="email" name="email" required>
                         </div>
                         <div class="mb-3">
-                            <label for="motdepasse" class="form-group">Mot de passe :</label>
+                            <label for="motdepasse" class="form-group">Mot de passe : <span class="required">*</span></label>
                             <input type="password" class="form-control" id="motdepasse" name="motdepasse" required>
                         </div>
                         <div class="mb-3">
-                            <label for="confirmation" class="form-group">Confirmation :</label>
+                            <label for="confirmation" class="form-group">Confirmation : <span class="required">*</span></label>
                             <input type="password" class="form-control" id="confirmation" name="confirmation" required>
                         </div>
                         <div class="mb-3">
-                            <label for="fonction" class="form-group">Fonction dans l'entreprise :</label>
+                            <label for="fonction" class="form-group">Fonction dans l'entreprise : <span class="required">*</span></label>
                             <select name="fonction" id="fonction" class="form-control">
                                 <option value="employe">Employé</option>
                                 <option value="directeur">Directeur</option>
@@ -58,39 +58,43 @@
                             <input type="tel" class="form-control" id="tel2" name="tel2">
                         </div>
                         <div class="mb-3">
-                            <label for="entreprise" class="form-group">Nom d'entreprise :</label>
+                            <label for="entreprise" class="form-group">Nom d'entreprise : <span class="required">*</span></label>
                             <input type="text" class="form-control" id="entreprise" name="entreprise" required>
                         </div>
                         <div class="mb-3">
-                            <label for="siret" class="form-group">SIRET :</label>
+                            <label for="siret" class="form-group">SIRET : <span class="required">*</span></label>
                             <input type="text" class="form-control" id="siret" name="siret" required>
                         </div>
                         <div class="mb-3">
-                            <label for="codeNAF" class="form-group">Code NAF :</label>
+                            <label for="codeNAF" class="form-group">Code NAF : <span class="required">*</span></label>
                             <input type="text" class="form-control" id="codeNAF" name="codeNAF" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="numero" class="form-label">Numéro :</label>
-                            <input type="text" class="form-control" id="numero" name="numero" required>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="numero" class="form-label">Numéro : <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="numero" name="numero" required>
+                            </div>
+                            <div class="col-md-10 mb-3">
+                                <label for="adresse" class="form-label">Adresse : <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="codepostal" class="form-label">Code Postal : <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="codepostal" name="codepostal" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="ville" class="form-label">Ville : <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="ville" name="ville" required>
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="pays" class="form-label">Pays : <span class="required">*</span></label>
+                                <input type="text" class="form-control" id="pays" name="pays" required>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="adresse" class="form-label">Adresse :</label>
-                            <input type="text" class="form-control" id="adresse" name="adresse" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="codepostal" class="form-label">Code Postal :</label>
-                            <input type="text" class="form-control" id="codepostal" name="codepostal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="ville" class="form-label">Ville :</label>
-                            <input type="text" class="form-control" id="ville" name="ville" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="pays" class="form-label">Pays :</label>
-                            <input type="text" class="form-control" id="pays" name="pays" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Description :</label>
+                            <label for="description" class="form-label">Description : <span class="required">*</span></label>
                             <textarea type="text" class="form-control" id="description" name="description" rows="4" required></textarea>
                         </div>
                         <div class="d-flex align-items-center">
