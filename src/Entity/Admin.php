@@ -15,7 +15,7 @@ class Admin
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $post = null;
+    private ?string $poste = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Utilisateur $idUtilisateur = null;
@@ -25,14 +25,14 @@ class Admin
         return $this->id;
     }
 
-    public function getPost(): ?string
+    public function getPoste(): ?string
     {
-        return $this->post;
+        return $this->poste;
     }
 
-    public function setPost(string $post): static
+    public function setPoste(string $poste): static
     {
-        $this->post = $post;
+        $this->poste = $poste;
 
         return $this;
     }

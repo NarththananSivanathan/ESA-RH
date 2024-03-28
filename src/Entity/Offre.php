@@ -19,17 +19,26 @@ class Offre
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $description = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $salaire = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $localisation = null;
+    private ?string $etude_min = null;
 
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $exigence = null;
+    #[ORM\Column(length: 255)]
+    private ?string $experience_min = null;
 
     #[ORM\Column(length: 255)]
     private ?string $type_contrat = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nb_heure = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $description = null;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $prerequis = null;
 
     #[ORM\ManyToOne(inversedBy: 'offres')]
     private ?Entreprise $idEntreprise = null;
@@ -37,10 +46,8 @@ class Offre
     #[ORM\OneToMany(targetEntity: Candidature::class, mappedBy: 'idOffre')]
     private Collection $candidatures;
 
-
     public function __construct()
     {
-        $this->idCandidat = new ArrayCollection();
         $this->candidatures = new ArrayCollection();
     }
 
@@ -61,38 +68,38 @@ class Offre
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getSalaire(): ?string
     {
-        return $this->description;
+        return $this->salaire;
     }
 
-    public function setDescription(string $description): static
+    public function setSalaire(?string $salaire): static
     {
-        $this->description = $description;
+        $this->salaire = $salaire;
 
         return $this;
     }
 
-    public function getLocalisation(): ?string
+    public function getEtudeMin(): ?string
     {
-        return $this->localisation;
+        return $this->etude_min;
     }
 
-    public function setLocalisation(string $localisation): static
+    public function setEtudeMin(string $etude_min): static
     {
-        $this->localisation = $localisation;
+        $this->etude_min = $etude_min;
 
         return $this;
     }
 
-    public function getExigence(): ?string
+    public function getExperienceMin(): ?string
     {
-        return $this->exigence;
+        return $this->experience_min;
     }
 
-    public function setExigence(string $exigence): static
+    public function setExperienceMin(string $experience_min): static
     {
-        $this->exigence = $exigence;
+        $this->experience_min = $experience_min;
 
         return $this;
     }
@@ -109,6 +116,42 @@ class Offre
         return $this;
     }
 
+    public function getNbHeure(): ?string
+    {
+        return $this->nb_heure;
+    }
+
+    public function setNbHeure(string $nb_heure): static
+    {
+        $this->nb_heure = $nb_heure;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): static
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getPrerequis(): ?string
+    {
+        return $this->prerequis;
+    }
+
+    public function setPrerequis(string $prerequis): static
+    {
+        $this->prerequis = $prerequis;
+
+        return $this;
+    }
+
     public function getIdEntreprise(): ?Entreprise
     {
         return $this->idEntreprise;
@@ -117,42 +160,6 @@ class Offre
     public function setIdEntreprise(?Entreprise $idEntreprise): static
     {
         $this->idEntreprise = $idEntreprise;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Candidat>
-     */
-    public function getIdCandidat(): Collection
-    {
-        return $this->idCandidat;
-    }
-
-    public function addIdCandidat(Candidat $idCandidat): static
-    {
-        if (!$this->idCandidat->contains($idCandidat)) {
-            $this->idCandidat->add($idCandidat);
-        }
-
-        return $this;
-    }
-
-    public function removeIdCandidat(Candidat $idCandidat): static
-    {
-        $this->idCandidat->removeElement($idCandidat);
-
-        return $this;
-    }
-
-    public function getCandidat(): ?Candidat
-    {
-        return $this->candidat;
-    }
-
-    public function setCandidat(?Candidat $candidat): static
-    {
-        $this->candidat = $candidat;
 
         return $this;
     }
