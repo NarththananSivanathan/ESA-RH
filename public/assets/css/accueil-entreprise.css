@@ -1,0 +1,54 @@
+.container-fluid {
+    background-color: #D43A3A;
+}
+
+
+.corps-blanc {
+    color: white !important;;
+}
+
+.card {
+    border-radius: 0;
+    box-shadow: -5px 5px 5px 5px rgba(0, 0, 0, 0.25);
+
+}
+
+.card-header {
+    border: none;
+    background-color: white;
+    color: #D43A3A ;
+}
+
+.card-footer {
+    border: none;
+    background-color: white;
+}
+
+.table, .table td {
+    border: none;
+}
+
+.card-titre {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.choix {
+    font-weight: bold;
+    font-size: 24;
+}
+
+.card-footer a {
+    text-decoration: underline;
+    color: #D43A3A;
+}
+
+.card-footer a:hover {
+    font-weight: bold;
+}
+
+.info {
+    text-decoration: underline;
+    color: #D43A3A;
+}
+
