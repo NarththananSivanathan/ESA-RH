@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/cvetlettreCandidat.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+
+    <div class="container">
+        <div class="position-relative">
+            <div class="bg-light p-3 rounded-lg shadow">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <input type="text" id="poste" class="form-control" placeholder="Intitulé du poste, mot clé ou entreprise...">
+                    </div>
+                    <div class="col">
+                        <input type="text" id="ville" class="form-control" placeholder="Ville, département, code postal...">
+                    </div>
+                   <div class="col-auto">
+                        <button class="btn btn-primary" style="background-color: red;">Rechercher</button>
+                    </div>
+
+                </div>
+            </div>
+            {# <img src="https://via.placeholder.com/40x40" class="position-absolute top-0 start-50 translate-middle rounded-circle" style="width: 40px; height: 40px;"> #}
+        </div>
+    </div>
+
+
+    <br><br><br>
+
+
+
+    <div class="col mx-auto text-center">
+        <div class="p-3" style="text-decoration: underline; color: red;">
+            <h2>Candidatures</h2>
+        </div>
+    </div>
+
+
+
+    <br><br><br>
+
+    <div class="container">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="row gx-5">
+                <div class="col-md-6">
+                    <div class="p-4 mb-4 bg-white rounded shadow h-100 w-100">
+                        <h4 class="text-center">Veillez déposer votre CV</h4>
+                        <br><br>
+                        <div class="d-grid gap-2">
+                            <input type="file" class="btn btn-primary btn-ajouter" accept=".pdf, .doc, .docx" />
+                            <button class="btn btn-secondary" type="button">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 mb-4 bg-white rounded shadow h-100 w-100">
+                        <h4 class="text-center">Lettre de Motivation</h4>
+                        <p class="text-start">
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae deleniti sed nisi eligendi 
+                            nihil odio rerum hic libero quam molestiae earum porro dolor, placeat corporis voluptatum
+                            explicabo architecto laudantium magnam.
+                        </p>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-secondary" type="button">Modifier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br><br><br>
+
+            <div class="p-3" style="text-decoration: underline; color: red;">
+                <h2>Experience pertinente</h2>
+            </div>
+            <br>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example1">Intitulé du poste</label>
+                <input type="texte" id="form2Example1" class="form-control" />
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form2Example2">Entreprise</label>
+                <input type="texte" id="form2Example2" class="form-control" />
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-secondary me-2">Annuler</button>
+                <button class="btn btn-primary btn-postuler">Postuler</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

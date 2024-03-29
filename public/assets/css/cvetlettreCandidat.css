@@ -1,0 +1,28 @@
+
+h4 {
+    color: red; /* Mettre en rouge */
+    text-decoration: underline; /* Souligner */
+}
+
+.vertical-line {
+    border-left: 2px solid black; /* Ligne verticale noire */
+    height: 100%;
+    margin: auto; /* Centrer verticalement */
+}
+
+.btn-postuler {
+    color: white;
+    background-color: red; /* Bouton Postuler en rouge */
+}
+
+.btn-ajouter {
+    color: white;
+    background-color: red; /* Bouton Ajouter en rouge */
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrer horizontalement */
+}
+
