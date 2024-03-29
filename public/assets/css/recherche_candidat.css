@@ -1,0 +1,141 @@
+.contract-type {
+    width: auto;
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border: none; /* Supprime les bordures */
+    border-radius: 5px; /* Coins arrondis */
+    font-size: 16px;
+    font-family: Montserrat;
+    font-weight: 700;
+    cursor: pointer; /* Curseur au survol */
+    transition: background-color 0.3s ease; /* Transition fluide */
+}
+
+.contract-type:hover {
+    background-color: #0056b3; /* Changement de couleur au survol */
+}
+
+
+
+
+
+
+
+
+
+.button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    box-shadow: -25px 50px 51px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 22px;
+  }
+  
+  .icon {
+    font-size: 24px;
+  }
+  
+  .heart {
+    color: red;
+  }
+  
+  .phone {
+    color: blue;
+  }
+  
+  .trash {
+    color: gray;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+ /* Style pour la section des filtres */
+.filters {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* Style pour le titre des filtres */
+.filters h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Style pour les champs de saisie et les sélecteurs */
+.form-group label {
+    color: #555;
+    font-weight: bold;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+/* Style pour le bouton de recherche */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Style pour la section des résultats */
+.results {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+}
+
+/* Style pour le titre des résultats */
+.results h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Style pour les éléments de liste des résultats */
+.list-group-item {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.list-group-item h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.list-group-item p {
+    color: #555;
+}
+
+
+
+
+.red-text {
+    color: red;
+}
+
+.list-group-item {
+    text-align: left;
+}
