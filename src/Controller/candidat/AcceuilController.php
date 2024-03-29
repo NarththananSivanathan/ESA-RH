@@ -2,7 +2,20 @@
 
 namespace App\Controller\candidat;
 
-class AcceuilController
-{
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
+
+
+class AcceuilController extends AbstractController
+{
+    #[Route('/acceuil', name: 'app_acceuil')]
+    public function index(): Response
+    {
+        return $this->render('candidat/acceuil.html.twig', [
+            
+        ]);
+    }
 }

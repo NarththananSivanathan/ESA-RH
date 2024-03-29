@@ -8,13 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
  
-class CVetLettreController extends AbstractController
+class ConfirmationCvController extends AbstractController
 {
-
-    #[Route('/cv', name: 'app_cv')]
+    #[Route('/confirmation', name: 'app_confirmation')]
     public function index(): Response
     {
-        return $this->render('candidat\CVetLettre.html.twig', [
+        return $this->render('candidat\confirmationCv.html.twig', [
             
         ]);
     }

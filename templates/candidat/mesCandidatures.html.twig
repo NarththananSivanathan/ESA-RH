@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+{# {% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/acceuil_candidat.css') }}">
+{% endblock %} #}
+
+{% block body %}
+
+
+    <br><br>
+   <div class="container px-4">
+        <div class="row gx-5">
+            <div class="col mx-auto text-center">
+                <div class="p-3 shadow" style="text-decoration: underline; color: red;">
+                    {# <h2>Vous avez {{ nombreCandidatures }} candidatures</h2> #}
+                    <h2>Vous avez (N°) candidatures</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+    <div class="container px-4">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-8">
+                <div class="shadow p-3">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">N°</th>
+                                <th scope="col">Intitulé du poste</th>
+                                <th scope="col">Référence</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Date de candidature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Alternance IT</td>
+                                <td>190234</td>
+                                <td>En cours</td>
+                                <td>20/12/2007</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Alternance IT</td>
+                                <td>190234</td>
+                                <td>Refusé</td>
+                                <td>20/12/2007</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Alternance IT</td>
+                                <td>190234</td>
+                                <td>En attente</td>
+                                <td>20/12/2007</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>Alternance IT</td>
+                                <td>190234</td>
+                                <td>En attente</td>
+                                <td>20/12/2007</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>Alternance IT</td>
+                                <td>190234</td>
+                                <td>En attente</td>
+                                <td>20/12/2007</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
