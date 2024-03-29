@@ -11,15 +11,14 @@
 
 {% include 'boutDeCode/_navBar.html.twig' %}
     
-    <main class="flex-shrink-0">
+    <main class="flex-shrink-0 corps-blanc">
     
         <div class="container-fluid mb-4">       
             <div class="container">           
                 <div class="row">          
                     <div class="col-md-12 d-flex align-items-center"> 
                         <div class="profile-image">
-                            <img src="{{asset('assets/images/Profil.png')}}" alt="Profil" style="width: 100px;">
-                            <p>Nom du recruteur</p>
+                            <p class="text-center">Nom du recruteur</p>
                         </div>
                         <div class="profile-info ms-3">
                             <h6>Espace</h6>
@@ -35,7 +34,7 @@
         <section>
             <div class="container">
                 <div class="mb-4 d-flex justify-content-end">
-                    <button type="button" class="btn btn-dark">Créer une offre</button>
+                    <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
                 </div>
                 <div class="row mb-5">            
                     <div class="col-md-12">
@@ -48,28 +47,13 @@
                                     <div data-bs-toggle="collapse" data-bs-target="#collapseEnLigne" role="button" aria-expanded="true" aria-controls="collapseEnLigne" class="collapse-toggle">
                                         <span class="number me-2">(0)</span> <span class="choix">Offres publiées</span> <i class="fas fa-chevron-down"></i>
                                     </div>
-                                    <div id="collapseEnLigne" class="collapse">
+                                    <div id="collapseEnLigne" class="collapse col-md-12">
                                         <table aria-describedby="offres en ligne" class="table table-hover">
                                             <tr>
-                                                <td>Poste</td>
-                                                <td>Type Contrat</td>
-                                                <td>Date de publication</td>
-                                                <td>Localisation</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="mt-2">
-                                    <div data-bs-toggle="collapse" data-bs-target="#collapseBrouillon" role="button" aria-expanded="true" aria-controls="collapseEnLigne" class="collapse-toggle">
-                                        <span class="number me-2">(0)</span> <span class="choix">Brouillon </span><i class="fas fa-chevron-down"></i>
-                                    </div>
-                                    <div id="collapseBrouillon" class="collapse">
-                                        <table aria-describedby="offres en ligne" class="table table-hover">
-                                            <tr>
-                                                <td>Poste</td>
-                                                <td>Type Contrat</td>
-                                                <td>Date de publication</td>
-                                                <td>Localisation</td>
+                                                <td class="col-md-3">Poste</td>
+                                                <td class="col-md-3">Type Contrat</td>
+                                                <td class="col-md-3">Date de publication</td>
+                                                <td class="col-md-3">Localisation</td>
                                             </tr>
                                         </table>
                                     </div>

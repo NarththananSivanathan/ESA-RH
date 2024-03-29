@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InscriptionController extends AbstractController
 {
-    #[Route('/entreprise-candidat', name: 'entreprise-candidat')]
+    #[Route('/entreprise-inscription', name: 'entreprise-inscription')]
     public function index(): Response
     {
         return $this->render(view: 'entreprise/inscription.html.twig', parameters: [
