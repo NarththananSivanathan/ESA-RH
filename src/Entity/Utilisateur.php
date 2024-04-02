@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UtilisateurRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
@@ -30,6 +31,9 @@ class Utilisateur
 
     #[ORM\ManyToOne(inversedBy: 'idUtilisateur')]
     private ?Adresse $adresse = null;
+
+    #[ORM\Column(options:['default' => "CURRENT_TIMESTAMP"])]
+    private ?\DateTimeImmutable $date_inscription = null;
 
     public function getId(): ?int
     {
@@ -106,5 +110,22 @@ class Utilisateur
         $this->adresse = $adresse;
 
         return $this;
+    }
+
+    public function getDateInscription(): ?\DateTimeImmutable
+    {
+        return $this->date_inscription;
+    }
+
+    public function setDateInscription(\DateTimeImmutable $date_inscription): static
+    {
+        $this->date_inscription = $date_inscription;
+
+        return $this;
+    }
+
+    public function __construct()
+    {
+        $this->date_inscription = new \DateTimeImmutable();
     }
 }

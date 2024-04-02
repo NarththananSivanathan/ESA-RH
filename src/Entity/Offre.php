@@ -46,9 +46,13 @@ class Offre
     #[ORM\OneToMany(targetEntity: Candidature::class, mappedBy: 'idOffre')]
     private Collection $candidatures;
 
+    #[ORM\Column(options:['default' => "CURRENT_TIMESTAMP"])]
+    private ?\DateTimeImmutable $date_creation = null;
+
     public function __construct()
     {
         $this->candidatures = new ArrayCollection();
+        $this->date_creation = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -164,6 +168,17 @@ class Offre
         return $this;
     }
 
+    public function getDateCreation(): ?\DateTimeImmutable
+    {
+        return $this->date_creation;
+    }
+
+    public function setDateCreation(?\DateTimeImmutable $date_creation): void
+    {
+        $this->date_creation = $date_creation;
+    }
+
+
     /**
      * @return Collection<int, Candidature>
      */
@@ -194,3 +209,4 @@ class Offre
         return $this;
     }
 }
+
