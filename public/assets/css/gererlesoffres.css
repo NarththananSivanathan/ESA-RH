@@ -1,0 +1,58 @@
+.bande {
+    background-color: #D43A3A;
+    color: #faf8f8;
+}
+
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+@media screen and (max-width: 768px) {
+    table {
+        display: block;
+    }
+    tbody {
+        display: block;
+    }
+    tr {
+        display: block;
+        margin-bottom: 12px;
+    }
+    th, td {
+        display: block;
+        width: 100%;
+        font-size: 13px;
+        text-align: right;
+    }
+    td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        font-size: 13px;
+        color: gray;
+    }
+    thead {
+        display: none;
+    }
+}

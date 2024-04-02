@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacter un candidat{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/contactercandidat.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mb-4 bande">       
+        <div class="container">           
+            <div class="row">          
+                <div class="col-md-12 d-flex align-items-center"> 
+                    <div class="profile-image">
+                        <p class="text-center">Nom du recruteur</p>
+                    </div>
+                    <div class="profile-info ms-3">
+                        <h5>Espace</h5>
+                        <u><p>Recruteur</p></u>
+                        <p>Nom de l'entreprise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+                      
+        <div class="container">
+            <div class="mb-4 d-flex justify-content-start mt-3">
+                <button type="button" class="btn btn-valider btn-dark">Retour</button>
+            </div> 
+
+            <div class=" text-start">
+                <div class="" style=" color: black;">
+                    <h4>Contacter un candidat</h4>
+                </div>
+            </div>
+
+            <div class="offre-box mb-2">
+                <div class="offre-info">
+                    <h5>Vous souhaitez contacter ce candidat</h5>
+                    <p class="mb-0">rédiger votre message</p>
+                    <p class="mb-4">cliquer sur envoyer</p>
+                    <h5>Nom du candidat + poste</h5>
+                </div>
+            </div>
+
+            <h4>Message</h4>
+            <hr>
+
+           <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Adressez votre message aux candidats : <em>2000 caractères maximum</em></label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" maxlength="2000" rows="20" required=""></textarea>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-end mt-3">
+                <button type="button" class="btn btn-valider btn-dark">Envoyer</button>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
