@@ -22,6 +22,15 @@ class Candidature
     #[ORM\ManyToOne(inversedBy: 'candidatures')]
     private ?Candidat $idCandidat = null;
 
+    #[ORM\Column(options:['default' => "CURRENT_TIMESTAMP"])]
+    private ?\DateTimeImmutable $date_candidature = null;
+
+    public function __construct()
+    {
+        $this->date_candidature = new \DateTimeImmutable();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,5 +70,15 @@ class Candidature
         $this->idCandidat = $idCandidat;
 
         return $this;
+    }
+
+    public function getDateCandidature(): ?\DateTimeImmutable
+    {
+        return $this->date_candidature;
+    }
+
+    public function setDateCandidature(?\DateTimeImmutable $date_candidature): void
+    {
+        $this->date_candidature = $date_candidature;
     }
 }
