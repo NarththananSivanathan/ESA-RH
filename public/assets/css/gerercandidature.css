@@ -1,0 +1,53 @@
+.bande {
+    background-color: #D43A3A;
+    color: #ffffff;
+}
+
+
+.offre-box {
+    background-color: rgba(27,50,68,.1);
+    color: #D43A3A;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.offre-info {
+    flex-grow: 1;
+}
+
+
+.icons a {
+    color: #D43A3A;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.icons a i {
+    color: #D43A3A;
+    font-size: 14px;
+}
+
+.icons a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.icons i {
+    font-size: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+
+}
+
+  
+
+@media screen and (max-width: 768px){   
+    span {
+        display: none;
+    }
+}

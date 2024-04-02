@@ -1,0 +1,146 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer l'offre{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/gererloffre.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mb-4 bande">       
+        <div class="container">           
+            <div class="row">          
+                <div class="col-md-12 d-flex align-items-center"> 
+                    <div class="profile-image">
+                        <p class="text-center">Nom du recruteur</p>
+                    </div>
+                    <div class="profile-info ms-3">
+                        <h5>Espace</h5>
+                        <u><p>Recruteur</p></u>
+                        <p>Nom de l'entreprise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>               
+        <div class="container">
+            <div class="mb-4 d-flex justify-content-start mt-3">
+                <button type="button" class="btn btn-valider btn-dark">Retour</button>
+            </div> 
+            <div class=" text-start">
+                <div class="" style=" color: black;">
+                    <h4>Gérer l'offre</h4>
+                </div>
+            </div>
+
+            <div class="offre-box">
+                <div class="offre-info">
+                    <h5>Intitulé de l'offre</h5>
+                    <p class="mb-0">Lieu de l'offre</p>
+                    <p class="mb-0">Date de création de l'offre</p>
+                    <p class="mb-0">Statistiques : 15 candidatures</p>
+                </div>
+                <div class="icons">
+                    <p ><a class="text-decoration-none" href="#"><i class="fas fa-eye"></i><span class="ms-2">Voir l'offre</span></a></p>
+                    <p ><a class="text-decoration-none" href="#"><i class="fas fa-pencil-alt"></i><span class="ms-2">Modifier</span></a></p>
+                    <p ><a class="text-decoration-none" href="#"><i class="fas fa-trash-alt"></i><span class="ms-2">Supprimer</span></a></p>
+                </div>
+            </div>
+
+            <div class="text-start mt-2">
+                <div class="" style=" text-decoration: underline; color: red;">
+                    <h5>Gérer vos candidatures</h5>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="container mt-5">
+            <!-- Tabs -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="candidatures-tab" data-bs-toggle="tab" data-bs-target="#candidatures" type="button" role="tab" aria-controls="candidatures" aria-selected="true"> ( 0 ) à traiter</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="retenus-tab" data-bs-toggle="tab" data-bs-target="#retenus" type="button" role="tab" aria-controls="retenus" aria-selected="false">( 0 ) Retenus</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="ecartees-tab" data-bs-toggle="tab" data-bs-target="#ecartees" type="button" role="tab" aria-controls="ecartees" aria-selected="false">( 0 ) Ecartées</button>
+                </li>
+            </ul>
+            <!-- Tab content -->
+            <div class="tab-content mt-3" id="myTabContent">
+                <!-- Candidatures à traiter -->
+                <div class="tab-pane fade show active" id="candidatures" role="tabpanel" aria-labelledby="candidatures-tab">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Candidat</th>
+                                <th>Statut</th>
+                                <th>Date de candidature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Insérez ici vos données dynamiques pour les candidatures à traiter -->
+                            <tr>
+                                <td><a href="#">John Doe</a></td>
+                                <td>En attente</td>
+                                <td>01/03/2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Retenus -->
+                <div class="tab-pane fade" id="retenus" role="tabpanel" aria-labelledby="retenus-tab">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Candidat</th>
+                                <th>Statut</th>
+                                <th>Date de candidature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Insérez ici vos données dynamiques pour les candidatures à traiter -->
+                            <tr>
+                                <td>John Doe 2</td>
+                                <td>retenu</td>
+                                <td>01/03/2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Ecartées -->
+                <div class="tab-pane fade" id="ecartees" role="tabpanel" aria-labelledby="ecartees-tab">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Candidat</th>
+                                <th>Statut</th>
+                                <th>Date de candidature</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Insérez ici vos données dynamiques pour les candidatures à traiter -->
+                            <tr>
+                                <td>John Doe 3</td>
+                                <td>En écarté</td>
+                                <td>01/03/2023</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endblock %}

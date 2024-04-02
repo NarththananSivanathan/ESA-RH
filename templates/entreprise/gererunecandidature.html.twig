@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer une candidature{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/gerercandidature.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mb-4 bande">       
+        <div class="container">           
+            <div class="row">          
+                <div class="col-md-12 d-flex align-items-center"> 
+                    <div class="profile-image">
+                        <p class="text-center">Nom du recruteur</p>
+                    </div>
+                    <div class="profile-info ms-3">
+                        <h5>Espace</h5>
+                        <u><p>Recruteur</p></u>
+                        <p>Nom de l'entreprise</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>               
+        <div class="container">
+            <div class="mb-4 d-flex justify-content-start mt-3">
+                <button type="button" class="btn btn-valider btn-dark">Retour</button>
+            </div> 
+            <div class=" text-start">
+                <div class="" style=" color: black;">
+                    <h4>Titre de l'offre</h4>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-end">
+                <button type="button" class="btn btn-annuler btn-dark me-4">Ecarter ce candidat</button>
+                <button type="button" class="btn btn-valider btn-dark">Retenir ce candidat</button>
+            </div>
+
+            <div class="offre-box">
+                <div class="offre-info">
+                    <h5>Nom du candidat</h5>
+                    <p class="mb-0">Mobile : ...</p>
+                    <p class="mb-0">Mail : ...</p>
+                </div>
+                <div class="icons">
+                    <p >Date de candidature</p>
+                    <p ><a class="text-decoration-none" href="#"><i class="fas fa-download"></i><span class="ms-2">Télécharger le Cv</span></a></p>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-end mt-3">
+                <button type="button" class="btn btn-valider btn-dark">Contacter ce candidat</button>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
