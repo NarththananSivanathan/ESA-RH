@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets\css\detailO_candidat.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid py-3">
+        <div class="row align-items-center">
+            <div class="col text-right">
+                <button class="btn btn-primary return-button validé">Retour à l'offre</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="container-fluid  shadow">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card amber-bg">
+                    <div class="card-body">
+
+                        <div class="container">
+                            <div class="row justify-content-end">
+                                <div class="col-auto  btn btn-primary validé">
+                                        Postuler <i class="fas fa-chevron-right ml-1"></i>
+                                    {# <a href="{{ path('postuler_offre') }}" </a> #}
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h5 class="card-title" style= "color:red;">DevOps Cloud (Paris)</h5>
+                        <p class="card-text">Ref. Apec : 173383381W / Ref. Société : DevOps Cloud (Paris)</p>
+                        <p>Aurera2</p>
+                        <p>CDD et Alternance – Contrat d'apprentissage de 15 mois</p>
+                        <p>Paris 15 - 75</p>
+                        <p>Publiée le 26/03/2024</p>
+                        <p>Actualisée le 26/03/2024</p>
+                        <ul>
+                        
+                            <li><p>Salaire : 12 - 20 k€ brut annuel</p></li>
+                            <li><p>Prise de poste : Dès que possible</p></li>
+                            <li> <p>Expérience : Tous niveaux d'expérience acceptés</p></li>
+                            <li><p>Métier : Développeur</p></li>
+                            <li><p>Statut du poste : Cadre du secteur privé</p></li>
+                            <li><p>Zone de déplacement : Régionale</p></li>
+                            <li><p>Secteur d’activité du poste : CONSEIL EN SYSTÈMES ET LOGICIELS INFORMATIQUES</p></li>
+                        
+                        </ul>
+                        
+                        <h5 class="mt-4">Descriptif du poste</h5>
+                        <p>Avec AURERA – Devenez par l’alternance Administrateur Systèmes DevOps (Formation diplômante d’une durée de quinze mois).</p>
+                        
+                        <h5 class="mt-4">Profil recherché</h5>
+                        <p>Les qualités requises :</p>
+                        <!-- Autres détails du profil recherché -->
+                        
+                        <h5 class="mt-4">Compétences attendues</h5>
+                            <ul>
+                            
+                                <li><p>LANGUES</p></li>
+                                <li> <p>Anglais, Français</p></li>
+                                <li> <p>SAVOIR-ÊTRE</p></li>
+                                <li><p>Capacité de communication, Esprit d'équipe</p></li>
+                                <li><p>SAVOIR-FAIRE</p></li>
+                                <li><p>Informatique</p></li>
+                            
+                            </ul>
+                        
+                        <h5 class="mt-4">Entreprise</h5>
+                        <p>AURERA, est une société spécialisée dans le conseil et l expertise technologique...</p>
+                        <br>
+                        <button type="button" class="btn btn-primary text-center">Retrouvez vos candidatures</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
