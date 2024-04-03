@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostulerOffreController extends AbstractController
 {
-
     #[Route('/postule', name: 'app_postuler_offre')]
     public function index(): Response
     {
@@ -17,5 +16,4 @@ class PostulerOffreController extends AbstractController
             
         ]);
     }
- 
 }
