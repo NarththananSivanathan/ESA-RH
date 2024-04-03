@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets\css\postulerOffre_candidat.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+
+    <div class="container-fluid">
+        <div class="row align-items-center py-3">
+            <div class="col text-right">
+                <button class="btn btn-primary return-button validé">Retour à l'offre</button>
+            </div>
+        </div>
+
+        <div class="row justify-content-center align-items-center ">
+            <div class="col-12 col-md-10 amber-bg p-5 text-center rounded shadow">
+                <img src="logo.png" class="img-fluid mb-3" alt="Logo">
+                <h1 class="mb-0 "style= "color: red;">Alternance Développeur Fullstack</h1>
+                <h4>Esic</h4>
+                <button class="btn btn-dark mt-3 validé ">Sauvegarder l'offre</button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row justify-content-center align-items-center ">
+            <div class="col-12 col-md-10">
+                <div class="accordion amber-bg rounded p-4 shadow">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Ajouter un message au recruteur ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form>
+                                    <div class="form-group">
+                                        <textarea class="form-control" id="message" rows="3" placeholder="Entrez votre message"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Données complémentaires
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="formation">Niveau de formation *</label>
+                                        <select class="form-control" id="formation">
+                                            <option value="bac2">Bac+2</option>
+                                            <option value="bac3">Bac+3</option>
+                                            <option value="bac5">Bac+5</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="discipline">Discipline *</label>
+                                        <input type="text" class="form-control" id="discipline" placeholder="Informatique scientifique">
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="nature-formation">Nature de formation *</label>
+                                        <input type="text" class="form-control" id="nature-formation" placeholder="Autre Ecole de Spécialité">
+                                    </div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="date-diplome">Date d'obtention du diplôme *</label>
+                                        <select class="form-control" id="date-diplome">
+                                            <option value="2020">2020</option>
+                                            <option value="2021">2021</option>
+                                            <option value="2022">2022</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <p class="text-muted">Ces données sont à destination exclusive de l'ESA à des fins statistiques. Elles ne sont en aucun cas transmises aux recruteurs.</p>
+                                    <button type="submit" class="btn btn-primary mt-3">Valider</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item rounded p-4 mt-4 amber-bg">
+                    <p>Vous pourrez être amené à être contacté par un de nos consultants ESA dans le cadre des candidatures sur notre site.</p>
+                    <p class="text-muted">* Information obligatoire</p>
+                    <button class="btn btn-primary mt-4">Envoyer la candidature</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
