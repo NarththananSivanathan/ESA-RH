@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Controller\candidat;
-
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
- 
-class DetailOffreController extends AbstractController
+class AccueilController extends AbstractController
 {
 
-    #[Route('/detailO', name: 'app_detail0ffre')] 
+    #[Route('/', name: 'app_accueil')]
     public function index(): Response
     {
-        return $this->render('candidat\detailOffre.html.twig', [
-            
+        return $this->render('accueil.html.twig', [
+
         ]);
     }
+
 }

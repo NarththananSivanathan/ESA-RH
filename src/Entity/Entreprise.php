@@ -7,8 +7,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: EntrepriseRepository::class)]
+#[UniqueEntity("siret", message: "Un compte existe déjà avec ce SIRET")]
 class Entreprise
 {
     #[ORM\Id]
@@ -34,15 +36,19 @@ class Entreprise
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Utilisateur $idUtilisateur = null;
-
     #[ORM\OneToMany(targetEntity: Offre::class, mappedBy: 'idEntreprise')]
     private Collection $offres;
+
+    #[ORM\OneToMany(targetEntity: Recruteur::class, mappedBy: 'entreprise')]
+    private Collection $recruteurs;
+
+    #[ORM\Column]
+    private ?bool $isValid = null;
 
     public function __construct()
     {
         $this->offres = new ArrayCollection();
+        $this->recruteurs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,6 +166,48 @@ class Entreprise
                 $offre->setIdEntreprise(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Recruteur>
+     */
+    public function getRecruteurs(): Collection
+    {
+        return $this->recruteurs;
+    }
+
+    public function addRecruteur(Recruteur $recruteur): static
+    {
+        if (!$this->recruteurs->contains($recruteur)) {
+            $this->recruteurs->add($recruteur);
+            $recruteur->setEntreprise($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecruteur(Recruteur $recruteur): static
+    {
+        if ($this->recruteurs->removeElement($recruteur)) {
+            // set the owning side to null (unless already changed)
+            if ($recruteur->getEntreprise() === $this) {
+                $recruteur->setEntreprise(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isIsValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(bool $isValid): static
+    {
+        $this->isValid = $isValid;
 
         return $this;
     }

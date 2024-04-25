@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Acceuil-entreprise{% endblock %}
+{% block title %}Accueil-entreprise{% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset('assets/css/accueil-entreprise.css') }}">
@@ -10,13 +10,13 @@
 {% block body %}
 
 {% include 'boutDeCode/_navBar.html.twig' %}
-    
+
     <main class="flex-shrink-0 corps-blanc">
-    
-        <div class="container-fluid mb-4">       
-            <div class="container">           
-                <div class="row">          
-                    <div class="col-md-12 d-flex align-items-center"> 
+
+        <div class="container-fluid mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex align-items-center">
                         <div class="profile-image">
                             <p class="text-center">Nom du recruteur</p>
                         </div>
@@ -36,7 +36,7 @@
                 <div class="mb-4 d-flex justify-content-end">
                     <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
                 </div>
-                <div class="row mb-5">            
+                <div class="row mb-5">
                     <div class="col-md-12">
                         <div class="card" id="card-offre">
                             <div class="card-header">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-5">            
+                <div class="row mb-5">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mb-5">            
+                <div class="row mb-5">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -96,17 +96,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="info mb-10">Société :</div>
-                                            <p> 
-                                                STYLE ET INTERIEUR <br> 
-                                                SIRET 834937559 00013 <br> 
-                                                NAF 4791A ET VENTE À DISTANCE SUR CATALOGUE GÉNÉRAL 
+                                            <p>
+                                                STYLE ET INTERIEUR <br>
+                                                SIRET 834937559 00013 <br>
+                                                NAF 4791A ET VENTE À DISTANCE SUR CATALOGUE GÉNÉRAL
                                             </p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info mb-10">Adresse :</div>
-                                            <p> 
-                                                82 B AVENUE DES BOULEAUX <br> 
-                                                91170 VIRY-CHATILLON 
+                                            <p>
+                                                82 B AVENUE DES BOULEAUX <br>
+                                                91170 VIRY-CHATILLON
                                             </p>
                                     </div>
                                 </div>
@@ -119,6 +119,5 @@
 
     </main>
 
-{% include 'boutDeCode/_footer.html.twig' %}
 
 {% endblock %}

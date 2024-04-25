@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Controller\candidat;
+namespace App\Controller\Candidat;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PostulerOffreController extends AbstractController
+
+class ConfirmationCvController extends AbstractController
 {
-    #[Route('/postule', name: 'app_postuler_offre')]
+    #[Route('/confirmation', name: 'app_confirmation')]
     public function index(): Response
     {
-        return $this->render('candidat\postulerOffre.html.twig', [
-            
+        return $this->render('candidat\confirmationCv.html.twig', [
+
         ]);
     }
 }

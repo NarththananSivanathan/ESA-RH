@@ -7,23 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdminRepository::class)]
 #[ORM\Table(name: '`admin`')]
-class Admin
+class Admin extends Utilisateur
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column(length: 255)]
     private ?string $poste = null;
-
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Utilisateur $idUtilisateur = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getPoste(): ?string
     {
@@ -37,15 +24,13 @@ class Admin
         return $this;
     }
 
-    public function getIdUtilisateur(): ?Utilisateur
+    public function getRoles(): array
     {
-        return $this->idUtilisateur;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_ADMIN';
+
+        return array_unique($roles);
     }
 
-    public function setIdUtilisateur(?Utilisateur $idUtilisateur): static
-    {
-        $this->idUtilisateur = $idUtilisateur;
-
-        return $this;
-    }
 }

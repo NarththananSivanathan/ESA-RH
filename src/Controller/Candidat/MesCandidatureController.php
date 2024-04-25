@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\candidat;
+namespace App\Controller\Candidat;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -15,19 +15,19 @@ class MesCandidatureController extends AbstractController
     public function index(): Response
     {
         return $this->render('candidat\mesCandidatures.html.twig', [
-            
+
         ]);
     }
 
 
 
 
-    // public function acceuil(CandidatureRepository $candidatureRepository): Response
+    // public function accueil(CandidatureRepository $candidatureRepository): Response
     // {
     //     // Récupérez le nombre de candidatures depuis votre base de données
     //     $nombreCandidatures = $candidatureRepository->count([]);
 
-    //     return $this->render('candidat/acceuil.html.twig', [
+    //     return $this->render('candidat/accueil.html.twig', [
     //         'nombreCandidatures' => $nombreCandidatures,
     //     ]);
     // }
@@ -35,4 +35,3 @@ class MesCandidatureController extends AbstractController
 
 }
 
-    

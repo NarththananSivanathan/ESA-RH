@@ -2,7 +2,7 @@
 
 namespace App\Controller\admin;
 
-class AcceuilController
+class AccueilController
 {
 
 }
