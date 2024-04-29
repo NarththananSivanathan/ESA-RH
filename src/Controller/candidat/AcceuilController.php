@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AcceuilController extends AbstractController
 {
-    #[Route('/acceuil', name: 'app_acceuil')]
+    #[Route('/acceuil-candidat', name: 'acceuilCandidat')]
     public function index(): Response
     {
         return $this->render('candidat/acceuil.html.twig', [
