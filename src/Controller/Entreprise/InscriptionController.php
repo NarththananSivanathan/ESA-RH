@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\entreprise;
+namespace App\Controller\Entreprise;
 use App\Entity\Recruteur;
 use App\Form\RecruteurType;
 use Doctrine\ORM\EntityManagerInterface;

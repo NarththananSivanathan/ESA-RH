@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Controller\entreprise;
-
+namespace App\Controller\Entreprise;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CreeOffreController extends AbstractController
+class GererlOffreController extends AbstractController
 {
-    #[Route('/cree-offre', name: 'cree-offre')]
+    #[Route('/gererloffre', name: 'gererloffre')]
     public function index(): Response
     {
-        return $this->render(view: 'entreprise/creeOffre.html.twig', parameters: [
+        return $this->render(view: 'entreprise/gererlOffre.html.twig', parameters: [
 
         ]);
     }

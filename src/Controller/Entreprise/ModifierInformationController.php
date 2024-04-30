@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\entreprise;
+namespace App\Controller\Entreprise;
 
 class ModifierInformationController
 {
