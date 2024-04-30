@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Controller\entreprise;
-use App\Entity\Recruteur;
-use App\Form\RecruteurType;
+namespace App\Controller\Candidat;
+
+use App\Entity\Adresse;
+use App\Entity\Candidat;
+use App\Form\CandidatType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,17 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class InscriptionController extends AbstractController
 {
+
     private $passwordHasher;
 
     public function __construct(UserPasswordHasherInterface $passwordHasher) {
         $this->passwordHasher = $passwordHasher;
     }
 
-    #[Route('/inscription-entreprise', name: 'inscription-entreprise')]
+    #[Route('/inscription-candidat', name: 'inscription-candidat')]
     public function inscription(Request $request, EntityManagerInterface $em): Response
     {
-        $recurteur = new Recruteur();
-        $form = $this->createForm(RecruteurType::class,$recurteur);
+        $candidat = new Candidat();
+        $form = $this->createForm(CandidatType::class,$candidat);
 
         if ($request->isMethod('POST')) {
             $allValues = $request->request->all();
@@ -30,23 +33,21 @@ class InscriptionController extends AbstractController
 
             if ($form->isSubmitted() && $form->isValid()) {
 
-            /** @var Recruteur $recurteur */
+            /** @var Candidat $candidat */
 
-                $recurteur = $form->getData();
+                $candidat = $form->getData();
 
                 $hashedPassword = $this->passwordHasher->hashPassword(
-                    $recurteur,
-                    $recurteur->getPassword()
+                    $candidat,
+                    $candidat->getPassword()
                 );
-                $recurteur->setPassword($hashedPassword);
+                $candidat->setPassword($hashedPassword);
 
-                $recurteur->setDateInscription(new \DateTimeImmutable());
+                $candidat->setDateInscription(new \DateTimeImmutable());
 
-                $recurteur->setRoles(['ROLE_RECRUTEUR']);
+                $candidat->setRoles(['ROLE_CANDIDAT']);
 
-                $recurteur->getEntreprise()->setIsValid(false);
-
-                $em->persist($recurteur);
+                $em->persist($candidat);
                 $em->flush();
 
                 $this->addFlash(
@@ -58,7 +59,7 @@ class InscriptionController extends AbstractController
             }
         }
 
-        return $this->render(view: 'entreprise/inscription.html.twig', parameters: [
+        return $this->render(view: 'candidat/inscription.html.twig', parameters: [
             'form' => $form
         ]);
     }

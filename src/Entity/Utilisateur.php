@@ -5,43 +5,53 @@ namespace App\Entity;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UtilisateurRepository;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: UtilisateurRepository::class)]
-class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\MappedSuperclass]
+#[UniqueEntity("email", message: "Un compte existe déjà avec cet email")]
+abstract class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    protected ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $civilite = null;
+    protected ?string $civilite = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $prenom = null;
+    protected ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    protected ?string $nom = null;
 
     #[ORM\Column(length: 255 , unique: true)]
-    private ?string $email = null;
+    protected ?string $email = null;
 
     /**
      * @var string The hashed password
      */
     #[ORM\Column(length: 255)]
-    private ?string $mot_de_passe = null;
+    #[Assert\Regex(
+        pattern: "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{12,}$/",
+        message: "Minimum 12 caractères \n".
+                  "1 lettre minuscule 1 lettre majuscule \n".
+                  "1 chiffre \n".
+                  "1 caractère spécial ou signe de ponctuation."
+    )]
+    protected ?string $password = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    protected array $roles = [];
 
-    #[ORM\ManyToOne(inversedBy: 'idUtilisateur')]
-    private ?Adresse $adresse = null;
+    #[ORM\ManyToOne(inversedBy: 'idUtilisateur', cascade: ["persist"])]
+    protected ?Adresse $adresse = null;
 
     #[ORM\Column(options:['default' => "CURRENT_TIMESTAMP"])]
-    private ?\DateTimeImmutable $date_inscription = null;
+    protected ?\DateTimeImmutable $date_inscription = null;
 
     public function getId(): ?int
     {
@@ -109,14 +119,6 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function getRoles(): array
-    {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
 
     public function setRoles(array $roles): static
     {
@@ -130,12 +132,12 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getPassword(): ?string
     {
-        return $this->mot_de_passe;
+        return $this->password;
     }
 
-    public function setMotDePasse(string $mot_de_passe): static
+    public function setPassword(string $password): static
     {
-        $this->mot_de_passe = $mot_de_passe;
+        $this->password = $password;
 
         return $this;
     }
@@ -173,8 +175,4 @@ class Utilisateur implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->date_inscription = new \DateTimeImmutable();
-    }
 }

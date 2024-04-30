@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -12,9 +13,12 @@ class ConnexionController extends AbstractController
     #[Route(path: '/connexion', name: 'connexion')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+         if ($this->getUser()) {
+             if(in_array('ROLE_RECRUTEUR', $this->getUser()->getRoles())){
+                 return $this->redirectToRoute('accueil_entreprise');
+             }
+             return $this->redirectToRoute('accueil_candidat');
+         }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

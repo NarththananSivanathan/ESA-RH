@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\candidat;
+namespace App\Controller\Candidat;
 
 
 
@@ -16,8 +16,8 @@ class RechercheOffreController extends AbstractController
     public function index(): Response
     {
         return $this->render('candidat\rechercheOffre.html.twig', [
-            
+
         ]);
     }
-    
+
 }

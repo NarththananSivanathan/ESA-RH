@@ -1,0 +1,10 @@
+.btn-choice {
+    color: #D43A3A;
+    background-color: #FFFFFF;
+    border-color: #D43A3A;
+}
+.btn-choice:hover {
+    color: #FFFFFF;
+    background-color: #BF3333;
+    border-color: #BF3333;
+}

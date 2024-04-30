@@ -8,13 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CandidatRepository::class)]
-class Candidat
+class Candidat extends Utilisateur
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $telephone = null;
 
@@ -24,20 +19,12 @@ class Candidat
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $lettre_de_motivation = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    private ?Utilisateur $idUtilisateur = null;
-
     #[ORM\OneToMany(targetEntity: Candidature::class, mappedBy: 'idCandidat')]
     private Collection $candidatures;
 
     public function __construct()
     {
         $this->candidatures = new ArrayCollection();
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
     }
 
     public function getTelephone(): ?string
@@ -76,17 +63,6 @@ class Candidat
         return $this;
     }
 
-    public function getIdUtilisateur(): ?Utilisateur
-    {
-        return $this->idUtilisateur;
-    }
-
-    public function setIdUtilisateur(?Utilisateur $idUtilisateur): static
-    {
-        $this->idUtilisateur = $idUtilisateur;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Candidature>
@@ -116,5 +92,14 @@ class Candidat
         }
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_CANDIDAT';
+
+        return array_unique($roles);
     }
 }

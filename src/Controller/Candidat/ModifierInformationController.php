@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\candidat;
+namespace App\Controller\Candidat;
 
 class ModifierInformationController
 {

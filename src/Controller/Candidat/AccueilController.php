@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Controller\candidat;
+namespace App\Controller\Candidat;
 
-use App\Entity\Home;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class InscriptionController extends AbstractController
+
+
+class AccueilController extends AbstractController
 {
-    #[Route('/inscription-candidat', name: 'inscription-candidat')]
+    #[Route('/candidat/accueil', name: 'accueil_candidat')]
     public function index(): Response
     {
-        return $this->render(view: 'candidat/inscription.html.twig', parameters: [
+        return $this->render('candidat/accueil.html.twig', [
 
         ]);
     }

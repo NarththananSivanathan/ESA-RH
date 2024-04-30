@@ -8,6 +8,7 @@
 
         <!-- Feuilles de styles -->
         <link rel="stylesheet" href="{{asset('assets/bootstrap-5.3.3-dist/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/popPopInscription.css')}}">
         {% block stylesheets %}
         {% endblock %}
         <link rel="stylesheet" href="{{asset('assets/css/global.css')}}">
@@ -24,7 +25,7 @@
         {% block body %}
         {% endblock %}
         {% include 'boutDeCode/_footer.html.twig' %}
+        {% include 'popPopInscription.html.twig' %}
 
     </body>
-
 </html>
