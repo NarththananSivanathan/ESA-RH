@@ -12,9 +12,6 @@ class AcceuilController extends AbstractController
     #[Route('/acceuil-entreprise', name: 'acceuil-entreprise')]
     public function index(): Response
     {
-        return $this->render(view: 'entreprise/acceuil.html.twig', parameters: [
-
-        ]);
+        return $this->render(view: 'entreprise/acceuil.html.twig', parameters: []);
     }
-
 }
