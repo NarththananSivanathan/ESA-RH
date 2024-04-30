@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\entreprise;
+namespace App\Controller\Entreprise;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
