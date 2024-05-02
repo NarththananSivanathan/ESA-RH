@@ -9,12 +9,13 @@
         <img src="{{asset('assets/images/ESA-RH-Logo.png')}}" alt="Logo" width="130" class="img-fluid">
       </a>
     </div>
+
     <div class="d-flex text-end ">
       <div class="nav-icons-container ms-auto">
         <a href="#" class="nav-icon me-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Modifier mes informations">
           <img src="{{asset('assets/images/icon_user.png')}}" alt="Modifier mes informations" width="40" class="img-fluid">
         </a>
-        <a href="#" class="nav-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Déconnexion">
+        <a href="{{ path('deconnexion') }}" class="nav-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Déconnexion">
           <img src="{{asset('assets/images/icon_out.png')}}" alt="Déconnexion" width="40" class="img-fluid">
         </a>
       </div>
