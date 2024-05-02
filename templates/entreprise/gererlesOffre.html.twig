@@ -4,21 +4,18 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/gererlesoffres.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 {% endblock %}
 
 {% block body %}
+    {% include 'boutDeCode/_navBarApres.html.twig' %}
 
-    <div class="container-fluid mb-4 bande">       
-        <div class="container">           
-            <div class="row">          
-                <div class="col-md-12 d-flex align-items-center"> 
-                    <div class="profile-image">
-                        <p class="text-center">Nom du recruteur</p>
-                    </div>
-                    <div class="profile-info ms-3">
-                        <h5>Espace</h5>
-                        <u><p>Recruteur</p></u>
-                        <p>Nom de l'entreprise</p>
+    <div class="container-fluid mb-4 bande">
+        <div class="container-fluid mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex align-items-center justify-content-center">
+                        <h1>{{ entreprise.nom }}</h1>
                     </div>
                 </div>
             </div>
@@ -31,17 +28,20 @@
     </section>
         <div class="container">
             <div class="mb-4 d-flex justify-content-start mt-3">
-                <button type="button" class="btn btn-valider btn-dark">Retour</button>
-            </div> 
+                <a href="{{ path('accueil_entreprise') }}">
+                    <button type="button" class="btn btn-valider btn-dark">Retour</button>
+                </a>
+            </div>
             <div class=" text-start">
                 <div class="" style="text-decoration: underline; color: black;">
-                    {# <h2>Vous avez {{ nombreCandidatures }} candidatures</h2> #}
                     <h3>Gérer vos offres</h3>
                 </div>
             </div>
 
             <div class="mb-4 d-flex justify-content-end">
-                <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
+                <a href="{{ path('cree-offre') }}">
+                    <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
+                </a>
             </div>
 
             <div class="col-12">
@@ -50,54 +50,26 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th>N°</th>
-                                <th>Intitulé</th>
-                                <th>Contrat</th>
+                                <th>Titre</th>
+                                <th>Salaire</th>
+                                <th>Type de contrat</th>
                                 <th>Candidatures à traiter</th>
                                 <th>Publié le</th>
-                                <th>Responsable</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td data-label="N°">1</td>
-                                <td data-label="Intitulé"><a href="#" style="text-decoration: none; color: inherit;">Alternance IT</a></td>
-                                <td data-label="Contrat">190234</td>
-                                <td data-label="Candidatures à traiter">0</td>
-                                <td data-label="Publié le">20/12/2007</td>
-                                <td data-label="Responsable">Responsable</td>
-                            </tr>
-                            <tr>
-                                <td data-label="N°">2</td>
-                                <td data-label="Intitulé">Alternance IT</td>
-                                <td data-label="Contrat">190234</td>
-                                <td data-label="Candidatures à traiter">1</td>
-                                <td data-label="Publié le">20/12/2007</td>
-                                <td data-label="Responsable">Responsable</td>
-                            </tr>
-                            <tr>
-                                <td data-label="N°">3</td>
-                                <td data-label="Intitulé">Alternance IT</td>
-                                <td data-label="Contrat">190234</td>
-                                <td data-label="Candidatures à traiter">2</td>
-                                <td data-label="Publié le">20/12/2007</td>
-                                <td data-label="Responsable">Responsable</td>
-                            </tr>
-                            <tr>
-                                <td data-label="N°">4</td>
-                                <td data-label="Intitulé">Alternance IT</td>
-                                <td data-label="Contrat">190234</td>
-                                <td data-label="Candidatures à traiter">3</td>
-                                <td data-label="Publié le">20/12/2007</td>
-                                <td data-label="Responsable">Responsable</td>
-                            </tr>
-                            <tr>
-                                <td data-label="N°">5</td>
-                                <td data-label="Intitulé">Alternance IT</td>
-                                <td data-label="Contrat">190234</td>
-                                <td data-label="Candidatures à traiter">4</td>
-                                <td data-label="Publié le">20/12/2007</td>
-                                <td data-label="Responsable">Responsable</td>
-                            </tr>
+                        {% for offre in offres %}
+                            <a>
+                                <tr>
+                                    <td>{{ loop.index }}</td>
+                                    <td>{{ offre.titre }}</td>
+                                    <td>{{ offre.salaire }}</td>
+                                    <td>{{ offre.typeContrat }}</td>
+                                    <td>{{ offre.candidatures.count }}</td>
+                                    <td>{{ offre.dateCreation|date("d/m/Y") }}</td>
+                                </tr>
+                            </a>
+                        {% endfor %}
                         </tbody>
                     </table>
                 </div>

@@ -16,15 +16,8 @@
         <div class="container-fluid mb-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12 d-flex align-items-center">
-                        <div class="profile-image">
-                            <p class="text-center">Nom du recruteur</p>
-                        </div>
-                        <div class="profile-info ms-3">
-                            <h6>Espace</h6>
-                            <u><p>Recruteur</p></u>
-                            <p>Nom de l'entreprise</p>
-                        </div>
+                    <div class="col-md-12 d-flex align-items-center justify-content-center">
+                        <h1>{{ entreprise.nom }}</h1>
                     </div>
                 </div>
             </div>
@@ -34,7 +27,9 @@
         <section>
             <div class="container">
                 <div class="mb-4 d-flex justify-content-end">
-                    <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
+                    <a href="{{ path('cree-offre') }}">
+                        <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
+                    </a>
                 </div>
                 <div class="row mb-5">
                     <div class="col-md-12">
@@ -45,22 +40,34 @@
                             <div class="card-body">
                                 <div class="">
                                     <div data-bs-toggle="collapse" data-bs-target="#collapseEnLigne" role="button" aria-expanded="true" aria-controls="collapseEnLigne" class="collapse-toggle">
-                                        <span class="number me-2">(0)</span> <span class="choix">Offres publiées</span> <i class="fas fa-chevron-down"></i>
+                                        <span class="number me-2">({{ countOffre }})</span> <span class="choix">Offres publiées</span> <i class="fas fa-chevron-down"></i>
                                     </div>
                                     <div id="collapseEnLigne" class="collapse col-md-12">
                                         <table aria-describedby="offres en ligne" class="table table-hover">
                                             <tr>
-                                                <td class="col-md-3">Poste</td>
-                                                <td class="col-md-3">Type Contrat</td>
-                                                <td class="col-md-3">Date de publication</td>
-                                                <td class="col-md-3">Localisation</td>
+                                                <th class="col-md-3">Poste</th>
+                                                <th class="col-md-3">Type Contrat</th>
+                                                <th class="col-md-3">Date de publication</th>
+                                                <th class="col-md-3">Salaire</th>
+                                                <th class="col-md-3">Modifier</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-3">{{ lastOffre.titre }}</td>
+                                                <td class="col-md-3">{{ lastOffre.typeContrat }}</td>
+                                                <td class="col-md-3">{{ lastOffre.dateCreation|date('d-m-Y') }}</td>
+                                                <td class="col-md-3">{{ lastOffre.salaire }} €</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fas fa-pen" style="color: black;"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                         </table>
                                     </div>
                                 </div>
                             </div>
                             <div class="card-footer d-flex justify-content-end">
-                                <a href="#" class="footer-link">Voir toutes les offres</a>
+                                <a href="{{ path('afficher-les-offres') }}" class="footer-link">Voir toutes les offres</a>
                             </div>
                         </div>
                     </div>
@@ -97,16 +104,17 @@
                                     <div class="col-md-6">
                                         <div class="info mb-10">Société :</div>
                                             <p>
-                                                STYLE ET INTERIEUR <br>
-                                                SIRET 834937559 00013 <br>
-                                                NAF 4791A ET VENTE À DISTANCE SUR CATALOGUE GÉNÉRAL
+                                                {{ entreprise.nom }} <br>
+                                                SIRET : {{ entreprise.siret }} <br>
+                                                Code NAF : {{ entreprise.codeNaf }} <br>
                                             </p>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="info mb-10">Adresse :</div>
                                             <p>
-                                                82 B AVENUE DES BOULEAUX <br>
-                                                91170 VIRY-CHATILLON
+                                                {{ adresse.numero }} {{ adresse.adresse }} <br>
+                                                {{ adresse.codePostal }} {{ adresse.ville }} <br>
+                                                {{ adresse.pays }}
                                             </p>
                                     </div>
                                 </div>
