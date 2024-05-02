@@ -23,6 +23,11 @@ class MesCandidatureController extends AbstractController
             $candidatures = $candidat->getCandidatures();
         }
 
+        $candidatures = $candidatures->toArray();
+        usort($candidatures, function ($a, $b) {
+            return $b->getDateCandidature() <=> $a->getDateCandidature();
+        });
+
         $nombreCandidatures = count($candidatures);
 
         return $this->render('candidat\mesCandidatures.html.twig', [
