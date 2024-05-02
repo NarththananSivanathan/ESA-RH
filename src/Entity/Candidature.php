@@ -22,6 +22,10 @@ class Candidature
     #[ORM\ManyToOne(inversedBy: 'candidatures')]
     private ?Candidat $idCandidat = null;
 
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $message = null;
+
+
     #[ORM\Column(options:['default' => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $date_candidature = null;
 
@@ -80,5 +84,16 @@ class Candidature
     public function setDateCandidature(?\DateTimeImmutable $date_candidature): void
     {
         $this->date_candidature = $date_candidature;
+    }
+
+    public function getMessage(): ?string
+    {
+        return $this->message;
+    }
+
+    public function setMessage(?string $message): self
+    {
+        $this->message = $message;
+        return $this;
     }
 }

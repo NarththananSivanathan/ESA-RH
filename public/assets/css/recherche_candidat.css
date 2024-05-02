@@ -53,14 +53,6 @@
   
 
 
-
-
-
-
-
-
-
-
  /* Style pour la section des filtres */
 .filters {
     padding: 20px;
@@ -115,7 +107,7 @@
 
 /* Style pour les éléments de liste des résultats */
 .list-group-item {
-    border: 1px solid #ced4da;
+    border: 1px solid #999595;
     border-radius: 5px;
     margin-bottom: 10px;
 }
