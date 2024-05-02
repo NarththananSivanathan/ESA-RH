@@ -26,3 +26,16 @@ h4 {
     align-items: center; /* Centrer horizontalement */
 }
 
+.pdf-link {
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    color: black;
+}
+
+.pdf-icon {
+    font-size: 48px; /* Ajustez la taille de l'icône selon vos besoins */
+    color: black; /* Couleur de l'icône */
+    margin-bottom: 10px; /* Espacement sous l'icône */
+}
+
