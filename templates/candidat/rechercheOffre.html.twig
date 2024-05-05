@@ -19,7 +19,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="shadow p-4">
-						<form id="job-search-form">
+						<form id="job-search-form" action="{{ path('offres_recherche') }}">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -36,11 +36,12 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="contract-type"></label>
-										<select id="contract-type" name="contract-type" class="form-control">
+										<select id="contract-type" name="typeContrat" class="form-control" placeholder="Choisissez un type de contrat">
+											<option value="">Choisir...</option>
 											<option value="cdi">CDI</option>
 											<option value="cdd">CDD</option>
 											<option value="stage">Stage</option>
-											<option value="stage">Alternance</option>
+											<option value="alternance">Alternance</option>
 										</select>
 									</div>
 								</div>
@@ -69,23 +70,22 @@
 						<h3>Résultats</h3>
 					</div>
 					<ul id="job-results" class="list-group">
-                        {% for offre in offres %}
-						<li class="list-group-item shadow mb-5" style="text-align: left;;">
-							<img src="chemin_vers_votre_logo.png" alt="Logo de l entreprise">
-							<h5>{{ offre.idEntreprise.getNom() }}</h5>
-							<h3 class="red-text" style="color: red;">{{ offre.getTitre() }}</h3>
-							<p>
-								{{ offre.getDescription() }}
-							</p>
-							<h5>{{ offre.getSalaire()}}</h5>
-                            <a href="{{ path('offres_details', {'id': offre.getId()}) }}" class="btn btn-valider mb-3">Postuler</a>
-						</li>
-                        {% endfor %}
-						
+						{% for offre in offres %}
+							<li class="list-group-item shadow mb-5" style="text-align: left;;">
+								<img src="chemin_vers_votre_logo.png" alt="Logo de l entreprise">
+								<h5>{{ offre.idEntreprise.getNom() }}</h5>
+								<h3 class="red-text" style="color: red;">{{ offre.getTitre() }}</h3>
+								<p>
+									{{ offre.getDescription() }}
+								</p>
+								<h5>{{ offre.getSalaire()}}</h5>
+								<a href="{{ path('offres_details', {'id': offre.getId()}) }}" class="btn btn-valider mb-3">Postuler</a>
+							</li>
+						{% endfor %}
 					</ul>
 				</section>
-            </div>
-        </div>
-    </div>
-	
+			</div>
+		</div>
+	</div>
+
 </div>{% endblock %}
