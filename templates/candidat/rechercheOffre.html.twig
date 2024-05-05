@@ -19,7 +19,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12">
 					<div class="shadow p-4">
-						<form id="job-search-form">
+						<form id="job-search-form" action="{{ path('offres_recherche') }}">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
@@ -36,11 +36,12 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label for="contract-type"></label>
-										<select id="contract-type" name="contract-type" class="form-control">
+										<select id="contract-type" name="typeContrat" class="form-control" placeholder="Choisissez un type de contrat">
+											<option value="">Choisir...</option>
 											<option value="cdi">CDI</option>
 											<option value="cdd">CDD</option>
 											<option value="stage">Stage</option>
-											<option value="stage">Alternance</option>
+											<option value="alternance">Alternance</option>
 										</select>
 									</div>
 								</div>
@@ -63,100 +64,29 @@
 
 	<div class="container">
 		<div class="row">
-        {#	<div class="col-md-4 ">
-            <br>
-            <div class="accordion shadow" id="accordionExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Type de contrat
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="form-group">
-                            <select id="contrat" class="form-control">
-                                <option value="cdi">CDI</option>
-                                <option value="cdd">CDD</option>
-                                <option value="stage">Stage</option>
-                                <option value="alternance">Alternance</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMetiers" aria-expanded="false" aria-controls="collapseMetiers">
-                            Métier/Secteur
-                        </button>
-                    </h2>
-                    <div id="collapseMetiers" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="form-group">
-                                <label for="secteur">Sélectionnez un secteur :</label>
-                                <select id="secteur" class="form-control">
-                                    <option value="transport">Transport et Logistique</option>
-                                    <option value="informatique">Informatique</option>
-                                    <option value="sante">Santé</option>
-                                    <option value="industriel">Industriel</option>
-                                </select>
-                            </div>
-                            <br>
-                            <div class="form-group">
-                                <label for="contrat">Sélectionnez le metier :</label>
-                                <select id="contrat" class="form-control">
-                                    <option value="transport">Logisticien</option>
-                                    <option value="informatique">Developper Web</option>
-                                    <option value="sante">Pharmacien</option>
-                                    <option value="industriel">Electromecanicien</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Experience dans le poste
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <p>Qui êtes-vous ?</p>
-                            <br>
-                            <p>
-                                De formation Bac +5, École d'Ingénieur ou Universitaire spécialisée en aéronautique, informatique ou contrôle aérien. Vous recherchez un stage de dernière année ?
-                                Vous appréciez le travail en équipe ? Vous avez une bonne capacité d’analyse et de synthèse ? Vous êtes autonome et rigoureux dans votre travail ? Vous avez une bonne capacité à prendre des initiatives ? Alors vous êtes la pépite que nous recherchons !
-                                A compétences égales, ce poste est ouvert aux personnes en situation de handicap.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> #}
-
 			<div class="col-md-12">
 				<section class="results">
 					<div class="p-3 text-center" style="text-decoration: underline; color: red;">
 						<h3>Résultats</h3>
 					</div>
 					<ul id="job-results" class="list-group">
-                        {% for offreAvecEntreprise in offresAvecEntreprise %}
-						<li class="list-group-item shadow mb-5" style="text-align: left;;">
-							<img src="chemin_vers_votre_logo.png" alt="Logo de l entreprise">
-							<h5>{{ offreAvecEntreprise.entreprise.getNom() }}</h5>
-							<h3 class="red-text" style="color: red;">{{ offreAvecEntreprise.offre.getTitre() }}</h3>
-							<p>
-								{{ offreAvecEntreprise.offre.getDescription() }}
-							</p>
-							<h5>{{ offreAvecEntreprise.offre.getSalaire()}}</h5>
-                            <a href="{{ path('offres_details', {'id': offreAvecEntreprise.offre.getId()}) }}" class="btn btn-valider mb-3">Postuler</a>
-						</li>
-                        {% endfor %}
-						
+						{% for offre in offres %}
+							<li class="list-group-item shadow mb-5" style="text-align: left;;">
+								<img src="chemin_vers_votre_logo.png" alt="Logo de l entreprise">
+								<h5>{{ offre.idEntreprise.getNom() }}</h5>
+								<h3 class="red-text" style="color: red;">{{ offre.getTitre() }}</h3>
+								<p>
+									{{ offre.getDescription() }}
+								</p>
+								<h5>{{ offre.getSalaire()}}</h5>
+								<a href="{{ path('offres_details', {'id': offre.getId()}) }}" class="btn btn-valider mb-3">Postuler</a>
+							</li>
+						{% endfor %}
+
 					</ul>
 				</section>
-            </div>
-        </div>
-    </div>
-	
+			</div>
+		</div>
+	</div>
+
 </div>{% endblock %}

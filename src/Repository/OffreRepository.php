@@ -21,28 +21,49 @@ class OffreRepository extends ServiceEntityRepository
         parent::__construct($registry, Offre::class);
     }
 
-//    /**
-//     * @return Offre[] Returns an array of Offre objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Offre[] Returns an array of Offre objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('o.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Offre
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Offre
+    //    {
+    //        return $this->createQueryBuilder('o')
+    //            ->andWhere('o.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+
+    public function filterByCriteria(string $keyword = null, string $type_contrat = null): array
+    {
+        $queryBuilder = $this->createQueryBuilder('o');
+
+        // Filtrage par mot-clé
+        if ($keyword && strlen($keyword) >= 4) {
+            $queryBuilder->andWhere('o.titre LIKE :keyword')
+                ->setParameter('keyword', $keyword . '%');
+        }
+
+        // Filtrage par type de contrat
+        if ($type_contrat) {
+            $queryBuilder->andWhere('o.type_contrat = :type_contrat')
+                ->setParameter('type_contrat', $type_contrat);
+        }
+
+        $queryBuilder->orderBy('o.date_creation', 'DESC');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }
