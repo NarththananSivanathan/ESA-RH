@@ -25,6 +25,12 @@ class Candidature
     #[ORM\Column(type: "text", nullable: true)]
     private ?string $message = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $CV = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $lettre_de_motivation = null;
+
 
     #[ORM\Column(options:['default' => "CURRENT_TIMESTAMP"])]
     private ?\DateTimeImmutable $date_candidature = null;
@@ -94,6 +100,30 @@ class Candidature
     public function setMessage(?string $message): self
     {
         $this->message = $message;
+        return $this;
+    }
+
+    public function getCV(): ?string
+    {
+        return $this->CV;
+    }
+
+    public function setCV(?string $CV): static
+    {
+        $this->CV = $CV;
+
+        return $this;
+    }
+
+    public function getLettreDeMotivation(): ?string
+    {
+        return $this->lettre_de_motivation;
+    }
+
+    public function setLettreDeMotivation(?string $lettre_de_motivation): static
+    {
+        $this->lettre_de_motivation = $lettre_de_motivation;
+
         return $this;
     }
 }

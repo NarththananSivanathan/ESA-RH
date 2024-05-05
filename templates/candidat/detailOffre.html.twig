@@ -17,20 +17,21 @@
 		</div>
 	</div>
 
-    {# Code HTML pour le popup #}
-    <div id="popup">
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success" role="alert">
-                {{ message }}
-            </div>
-        {% endfor %}
-        {% for message in app.flashes('error') %}
-            <div class="alert alert-danger" role="alert">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
-    
+	<div class="container d-flex justify-content-center align-items-center">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
 	<div class="container-fluid shadow">
 		<div class="row justify-content-center">
 			<div class="col-md-8 mb-5">
@@ -39,10 +40,17 @@
 						<div class="container">
 							<div class="row justify-content-end">
 								<div class="col-auto">
-									<a href="{{ path('app_postuler_offre' , {'idOffre': offre.getId()})}}" class="btn btn-primary btn-valider">
-										Postuler
-										<i class="fas fa-chevron-right ml-1"></i>
-									</a>
+									{% if not dejaPostule %}
+										<a href="{{ path('app_postuler_offre' , {'idOffre': offre.getId()})}}" class="btn btn-primary btn-valider">
+											Postuler
+											<i class="fas fa-chevron-right ml-1"></i>
+										</a>
+									{% else %}
+										<h6>
+											Vous avez déja postuler à cette offre
+										</h6>
+									{% endif %}
+
 								</div>
 							</div>
 						</div>
@@ -50,7 +58,7 @@
 						<h3 class="card-title" style="color: red;">{{ offre.getTitre()}}</h3>
 						<h6 class="card-text">Ref.Esa :
 							{{ offre.getId() }}</h6>
-						<h4>{{ entreprise.getNom()}}</h4>
+						<h4>{{ offre.idEntreprise.getNom()}}</h4>
 						<ul>
 							<li>
 								<p>Type de Contrat :
@@ -87,7 +95,7 @@
 						<p>{{ offre.getPrerequis() }}</p>
 
 						<h5 class="mt-4">Entreprise</h5>
-						<p>{{ entreprise.getDescription() }}</p>
+						<p>{{ offre.idEntreprise.getDescription() }}</p>
 						<br>
 						<a href="{{path('app_candidatures')}}" class="btn btn-primary text-center btn-valider">Retrouvez vos candidatures</a>
 					</div>
