@@ -15,32 +15,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/offres', name: 'offres_')]
 class RechercheOffreController extends AbstractController
 {
-
     #[Route('/', name: 'index')]
     public function index(OffreRepository $offresRepository): Response
     {
         $offres = $offresRepository->findBy([], ['date_creation' => 'DESC']);
-        
         return $this->render('candidat\rechercheOffre.html.twig', [
             'offres' => $offres
         ]);
     }
 
-    #[Route('/filtres', name: 'recherche')]
-    public function filtre(Request $request, OffreRepository $offresRepository): Response
-    {
-        $keyword = $request->query->get('keyword');
-        $contractType = $request->query->get('typeContrat');
+     #[Route('/filtres', name: 'recherche')]
+      public function filtre(Request $request, OffreRepository $offresRepository): Response
+      {
+          $keyword = $request->query->get('keyword');
+          $contractType = $request->query->get('typeContrat');
 
-        $offres = $offresRepository->filterByCriteria($keyword, $contractType);
+          $offres = $offresRepository->filterByCriteria($keyword, $contractType);
 
-        return $this->render('candidat/rechercheOffre.html.twig', [
-            'offres' => $offres
-        ]);
-    }
+          return $this->render('candidat/rechercheOffre.html.twig', [
+              'offres' => $offres
+          ]);
+      }
 
     #[Route('/{id}', name: 'details')]
-    public function details(int $id, OffreRepository $offresRepository, EntityManagerInterface $entityManager): Response
+    public function details(int $id, EntityManagerInterface $entityManager): Response
     {
         $offre = $entityManager->getRepository(Offre::class)->find($id);
         // Vérifier si l'offre existe
@@ -54,10 +52,12 @@ class RechercheOffreController extends AbstractController
         ]);
 
         $dejaPostule = $candidature !== null;
-        
+
         return $this->render('candidat/detailOffre.html.twig', [
             'offre' => $offre,
             'dejaPostule' => $dejaPostule
         ]);
     }
+
+        
 }
