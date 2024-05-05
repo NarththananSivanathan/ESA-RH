@@ -12,18 +12,18 @@
 
     <div class="col mx-auto text-center shadow">
         <div class="p-3" style="text-decoration: underline; color: red;">
-            <h2>Consultation de votre Cv </h2>
+            <h2>Consulter vos documents </h2>
         </div>
     </div>
 
-    <br><br><br>
+    <br><br>
 
     <div class="container">
         <div class="shadow-lg p-3 mb-5 bg-white rounded">
             <div class="row gx-5">
                 <div class="col-md-6">
                     <div class="p-4 mb-4 bg-white rounded shadow h-100 w-100">
-                        <h4 class="text-center">Veuillez déposer votre CV</h4>
+                        <h4 class="text-center">Votre CV</h4>
                         {% if candidat.cv %}
                             <a href="{{ asset('fichiers/candidat/cv/' ~ candidat.cv) }}" target="_blank" class="pdf-link">
                                 <i class="fas fa-file-pdf pdf-icon"></i> Voir le CV
@@ -41,7 +41,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="p-4 mb-4 bg-white rounded shadow h-100 w-100">
-                        <h4 class="text-center">Lettre de Motivation</h4>
+                        <h4 class="text-center">Votre Lettre de Motivation</h4>
                         {% if candidat.lettreDeMotivation %}
                             <a href="{{ asset('fichiers/candidat/lm/' ~ candidat.lettreDeMotivation) }}" target="_blank" class="pdf-link">
                                 <i class="fas fa-file-pdf pdf-icon"></i> Voir la lettre de motivation

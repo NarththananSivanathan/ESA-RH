@@ -3,8 +3,9 @@
 namespace App\Controller\Candidat;
 
 use App\Entity\Offre;
+use App\Entity\Candidature;
 use App\Repository\OffreRepository;
-use App\Repository\EntrepriseRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,50 +13,35 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/offres', name: 'offres_')]
 class RechercheOffreController extends AbstractController
 {
-
-    /* #[Route('/recherche', name: 'app_recherche')]
-    public function index(): Response
-    {
-        return $this->render('candidat\rechercheOffre.html.twig', [
-
-        ]);
-    } */
     
         #[Route('/', name: 'index')]
-        public function index(OffreRepository $offresRepository, EntrepriseRepository $entrepriseRepository): Response
+        public function index(OffreRepository $offresRepository): Response
         {
             $offres = $offresRepository->findBy([], ['date_creation' => 'DESC']);
-            // Tableau pour stocker les informations sur les entreprises pour chaque offre
-            $offresAvecEntreprise = [];
-            // Associer chaque offre à son entreprise respective
-            foreach ($offres as $offre) {
-                $entreprise = $entrepriseRepository->find($offre->getIdEntreprise());
-                $offresAvecEntreprise[] = [
-                    'offre' => $offre,
-                    'entreprise' => $entreprise
-                ];
-            }
-            // Passer les données à la vue Twig
             return $this->render('candidat\rechercheOffre.html.twig', [
-                'offresAvecEntreprise' => $offresAvecEntreprise
+                'offres' => $offres
             ]);
         }
 
         #[Route('/{id}', name: 'details')]
-        public function details(int $id, OffreRepository $offresRepository, EntrepriseRepository $entrepriseRepository): Response
+        public function details(int $id, EntityManagerInterface $entityManager): Response
         {
-            // Récupérer l'offre à partir du slug
-            $offre = $offresRepository->findOneBy(['id' => $id]);
+            $offre = $entityManager->getRepository(Offre::class)->find($id);
             // Vérifier si l'offre existe
             if (!$offre) {
                 throw $this->createNotFoundException('Offre non trouvée');
             }
-            // Récupérer l'entreprise associée à l'offre
-            $entreprise = $entrepriseRepository->find($offre->getIdEntreprise());
-            // Afficher les détails de l'offre dans la vue Twig
+
+            $candidature = $entityManager->getRepository(Candidature::class)->findOneBy([
+                'idOffre' => $offre->getId(),
+                'idCandidat' => $this->getUser()->getId(),
+            ]);
+
+            $dejaPostule = $candidature !== null;
+        
             return $this->render('candidat/detailOffre.html.twig', [
                 'offre' => $offre,
-                'entreprise' => $entreprise
+                'dejaPostule' => $dejaPostule
             ]);
         }
     

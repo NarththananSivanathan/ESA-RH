@@ -22,8 +22,15 @@
 
     <body class="d-flex flex-column min-vh-100">
 
+        {% if app.user %}
+            {% include 'boutDeCode/_navBarApres.html.twig' %}
+        {% else %}
+            {% include 'boutDeCode/_navBarAvant.html.twig' %}
+        {% endif %}
+        
         {% block body %}
         {% endblock %}
+        
         {% include 'boutDeCode/_footer.html.twig' %}
         {% include 'popPopInscription.html.twig' %}
 
