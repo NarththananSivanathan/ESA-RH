@@ -12,7 +12,7 @@ class HelloController extends AbstractController
     #[Route('/hello', name: 'hello')]
     public function index(): Response
     {
-        return $this->render(view: 'entreprise/gererlesOffre.html.twig', parameters: [
+        return $this->render(view: 'entreprise/gererunecandidature.html.twig', parameters: [
 
         ]);
     }
