@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CandidatureRepository::class)]
 class Candidature
 {
-    public const STATUT_PENDING = "pending";
-    public const STATUT_ACCEPTED = "accepted";
-    public const STATUT_REFUSED = "refused";
+    public const STATUT_PENDING = "An Attente";
+    public const STATUT_ACCEPTED = "Retenu";
+    public const STATUT_REFUSED = "Ecartée";
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
