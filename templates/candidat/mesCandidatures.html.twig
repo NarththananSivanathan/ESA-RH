@@ -3,9 +3,10 @@
 {% block title %}ESA
 {% endblock %}
 
-{# {% block stylesheets %}
+{% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('assets/css/accueil_candidat.css') }}">
-{% endblock %} #}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
 
 {% block body %}
 
@@ -28,11 +29,12 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<th scope="col">N°</th>
-								<th scope="col">Intitulé du poste</th>
-								<th scope="col">Référence</th>
-								<th scope="col">Statut</th>
-								<th scope="col">Date de candidature</th>
+								<th scope="col" class ="col-1">N°</th>
+								<th scope="col" class ="col-4">Intitulé du poste</th>
+								<th scope="col" class ="col-2">Référence</th>
+								<th scope="col" class ="col-2">Statut</th>
+								<th scope="col" class ="col-2">Date de candidature</th>
+								<th scope="col" class ="col-1"></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -43,6 +45,7 @@
                                 <td>{{ candidature.getIdOffre().getId() }}</td>
                                 <td>{{ candidature.getStatutCandidature() }}</td>
                                 <td>{{ candidature.getDateCandidature()|date('d/m/Y') }}</td>
+								<td><a class="text-decoration-none" href="{{ path('candidature_details', {'id': candidature.getId()}) }}" style=" color: black;"><i class="fas fa-eye" ></i><span class="ms-2">Voir</span></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
