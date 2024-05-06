@@ -8,13 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CandidatureRepository::class)]
 class Candidature
 {
+    public const STATUT_PENDING = "An Attente";
+    public const STATUT_ACCEPTED = "Retenu";
+    public const STATUT_REFUSED = "Ecartée";
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $statut_candidature = null;
+    private ?string $statut_candidature = self::STATUT_PENDING;
 
     #[ORM\ManyToOne(inversedBy: 'candidatures')]
     private ?Offre $idOffre = null;

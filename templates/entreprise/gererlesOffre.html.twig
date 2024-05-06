@@ -58,16 +58,38 @@
                         </thead>
                         <tbody>
                         {% for offre in offres %}
-                            <a>
                                 <tr>
-                                    <td>{{ loop.index }}</td>
-                                    <td>{{ offre.titre }}</td>
-                                    <td>{{ offre.salaire }}</td>
-                                    <td>{{ offre.typeContrat }}</td>
-                                    <td>{{ offre.candidatures.count }}</td>
-                                    <td>{{ offre.dateCreation|date("d/m/Y") }}</td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ loop.index }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.titre }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.salaire }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.typeContrat }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.candidatures|filter(c => c.statutCandidature == constant('App\\Entity\\Candidature::STATUT_PENDING') )|length}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.dateCreation|date("d/m/Y") }}
+                                        </a>
+                                    </td>
                                 </tr>
-                            </a>
                         {% endfor %}
                         </tbody>
                     </table>
