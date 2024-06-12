@@ -1,0 +1,28 @@
+.offer-card {
+    transition: transform 0.3s ease;
+}
+
+.offer-card:hover {
+    transform: scale(1.1);
+}
+
+.titre {
+    text-decoration: underline; 
+    color: red;
+}
+
+.lien {
+    color: black;
+    font-size: 130%;
+    font-style: italic;
+    
+}
+
+.lien:hover {
+    font-weight: bold;
+}
+
+.versdetail{
+    text-decoration: none;
+    color: black;
+}
