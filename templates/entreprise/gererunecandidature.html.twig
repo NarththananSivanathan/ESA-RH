@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer une candidature{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/gerercandidature.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mb-4 bande">
+        <div class="container-fluid mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex align-items-center justify-content-center">
+                        <h1>{{ entreprise.nom }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="mb-4 d-flex justify-content-start mt-3">
+                <a href="{{ path('gerer_une_offre', {'id': candidature.idOffre.id} )}}">
+                    <button type="button" class="btn btn-valider btn-dark">Retour</button>
+                </a>
+            </div>
+            <div class=" text-start">
+                <div class="" style=" color: black;">
+                    <h4>{{ candidature.idOffre.titre }}</h4>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-end">
+                <a href="{{ path('refuser-une-candidature', {'id': candidature.id}) }}">
+                    <button type="button" class="btn btn-annuler btn-dark me-4">Ecarter ce candidat</button>
+                </a>
+                <a href="{{ path('accepter-une-candidature', {'id': candidature.id}) }}">
+                    <button type="button" class="btn btn-valider btn-dark">Retenir ce candidat</button>
+                </a>
+
+
+            </div>
+
+            <div class="offre-box">
+                <div class="offre-info">
+                    <h5>{{ candidature.idCandidat.nom }}</h5>
+                    <p class="mb-0">{{ candidature.idCandidat.telephone }}</p>
+                    <p class="mb-0">{{ candidature.idCandidat.email }}</p>
+                </div>
+                <div class="icons">
+                    <p>{{ candidature.dateCandidature|date("d/m/Y") }}</p>
+                    <p><a class="text-decoration-none" href="#"><i class="fas fa-download"></i><span class="ms-2">Télécharger le Cv</span></a></p>
+                    <p><a class="text-decoration-none" href="#"><i class="fas fa-download"></i><span class="ms-2">Télécharger Lettre de Motivation</span></a></p>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-end mt-3">
+                <button type="button" class="btn btn-valider btn-dark">Contacter ce candidat</button>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+.card {
+    border: none;
+}
+
+.card-title {
+    color: red;
+}
+
+.card-text, .list-group-item {
+    margin-bottom: 0.5rem;
+}
+
+.list-group {
+    margin-bottom: 1rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}

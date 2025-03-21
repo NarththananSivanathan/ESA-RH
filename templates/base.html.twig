@@ -4,26 +4,35 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-         <!-- Feuilles de styles -->
+        <link rel="icon" type="image/png" href="{{asset('assets/images/ESA-RH-Icon.png')}}">
+
+        <!-- Feuilles de styles -->
         <link rel="stylesheet" href="{{asset('assets/bootstrap-5.3.3-dist/css/bootstrap.min.css')}}">
-        {% block stylesheets %} 
+        <link rel="stylesheet" href="{{asset('assets/css/popPopInscription.css')}}">
+        {% block stylesheets %}
         {% endblock %}
         <link rel="stylesheet" href="{{asset('assets/css/global.css')}}">
-        
+
 
         <!-- Feuilles de javascripts -->
         <script src="{{asset('assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js')}}" defer></script>
         {% block javascripts %}
         {% endblock %}
     </head>
-   
-    <body>
 
+    <body class="d-flex flex-column min-vh-100">
+
+        {% if app.user %}
+            {% include 'boutDeCode/_navBarApres.html.twig' %}
+        {% else %}
+            {% include 'boutDeCode/_navBarAvant.html.twig' %}
+        {% endif %}
+        
         {% block body %}
         {% endblock %}
-    
-    
-    </body>
+        
+        {% include 'boutDeCode/_footer.html.twig' %}
+        {% include 'popPopInscription.html.twig' %}
 
+    </body>
 </html>

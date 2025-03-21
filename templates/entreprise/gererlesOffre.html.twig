@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gérer les offres{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/gererlesoffres.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid mb-4 bande">
+        <div class="container-fluid mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex align-items-center justify-content-center">
+                        <h1>{{ entreprise.nom }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section>
+
+
+    </section>
+        <div class="container">
+            <div class="mb-4 d-flex justify-content-start mt-3">
+                <a href="{{ path('accueil_entreprise') }}">
+                    <button type="button" class="btn btn-valider btn-dark">Retour</button>
+                </a>
+            </div>
+            <div class=" text-start">
+                <div class="" style="text-decoration: underline; color: black;">
+                    <h3>Gérer vos offres</h3>
+                </div>
+            </div>
+
+            <div class="mb-4 d-flex justify-content-end">
+                <a href="{{ path('cree-offre') }}">
+                    <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
+                </a>
+            </div>
+
+            <div class="col-12">
+                <div class="table-responsive shadow p-3">
+                    <table class="table table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>N°</th>
+                                <th>Titre</th>
+                                <th>Salaire</th>
+                                <th>Type de contrat</th>
+                                <th>Candidatures à traiter</th>
+                                <th>Publié le</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for offre in offres %}
+                                <tr>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ loop.index }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.titre }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.salaire }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.typeContrat }}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.candidatures|filter(c => c.statutCandidature == constant('App\\Entity\\Candidature::STATUT_PENDING') )|length}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ path('gerer_une_offre', {'id': offre.id}) }}">
+                                            {{ offre.dateCreation|date("d/m/Y") }}
+                                        </a>
+                                    </td>
+                                </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

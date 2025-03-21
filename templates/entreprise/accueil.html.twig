@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil-entreprise{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('assets/css/accueil-entreprise.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <main class="flex-shrink-0 corps-blanc">
+
+        <div class="container-fluid mb-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 d-flex align-items-center justify-content-center">
+                        <h1>{{ entreprise.nom }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <section>
+            <div class="container">
+                <div class="mb-4 d-flex justify-content-end">
+                    <a href="{{ path('cree-offre') }}">
+                        <button type="button" class="btn btn-valider btn-dark">Créer une offre</button>
+                    </a>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <div class="card" id="card-offre">
+                            <div class="card-header">
+                                <h4 class="card-titre"><i class="fas fa-briefcase me-3"></i>Mes offres</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="">
+                                    <div data-bs-toggle="collapse" data-bs-target="#collapseEnLigne" role="button" aria-expanded="true" aria-controls="collapseEnLigne" class="collapse-toggle">
+                                        <span class="number me-2">({{ countOffre }})</span> <span class="choix">Offres publiées</span> <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div id="collapseEnLigne" class="collapse col-md-12">
+                                        <table aria-describedby="offres en ligne" class="table table-hover">
+                                            <tr>
+                                                <th class="col-md-3">Poste</th>
+                                                <th class="col-md-3">Type Contrat</th>
+                                                <th class="col-md-3">Date de publication</th>
+                                                <th class="col-md-3">Salaire</th>
+                                                <th class="col-md-3">Modifier</th>
+                                            </tr>
+                                            <tr>
+                                                <td class="col-md-3">{{ lastOffre.titre }}</td>
+                                                <td class="col-md-3">{{ lastOffre.typeContrat }}</td>
+                                                <td class="col-md-3">{{ lastOffre.dateCreation|date('d-m-Y') }}</td>
+                                                <td class="col-md-3">{{ lastOffre.salaire }} €</td>
+                                                <td>
+                                                    <a href="#">
+                                                        <i class="fas fa-pen" style="color: black;"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="{{ path('afficher-les-offres') }}" class="footer-link">Voir toutes les offres</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-titre"><i class="fas fa-search me-3"></i>Mes recherches</h4>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table">
+                                    <tr>
+                                        <td>Nom recherche</td>
+                                        <td>Nombre de candidats</td>
+                                        <td><a href="#"><i class="fas fa-pen" style="color: black;"></i></a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="card-footer d-flex justify-content-end">
+                                <a href="#" class="footer-link">Voir toutes mes recherches</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-titre"><i class="fas fa-info-circle me-3"></i>Mon entreprise</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="info mb-10">Société :</div>
+                                            <p>
+                                                {{ entreprise.nom }} <br>
+                                                SIRET : {{ entreprise.siret }} <br>
+                                                Code NAF : {{ entreprise.codeNaf }} <br>
+                                            </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="info mb-10">Adresse :</div>
+                                            <p>
+                                                {{ adresse.numero }} {{ adresse.adresse }} <br>
+                                                {{ adresse.codePostal }} {{ adresse.ville }} <br>
+                                                {{ adresse.pays }}
+                                            </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+{% endblock %}

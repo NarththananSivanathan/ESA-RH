@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/postulerOffre_candidat.css') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{asset('assets/js/postulerOffre.js')}}" defer></script>
+{% endblock %}
+
+
+{% block body %}
+
+	<div class="container-fluid">
+		<div class="row align-items-center py-3">
+			<div class="col text-right">
+				<a href="{{ path('offres_details', {'id': offre.id}) }}" class="btn btn-primary return-button btn-annuler">Retour à l'offre</a>
+			</div>
+		</div>
+
+		<div class="container d-flex justify-content-center align-items-center">
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					{% for label, messages in app.flashes %}
+						{% for message in messages %}
+							<div class="alert alert-{{ label }}">
+								{{ message }}
+							</div>
+						{% endfor %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row justify-content-center align-items-center ">
+			<div class="col-12 col-md-10 amber-bg p-5 text-center rounded shadow">
+				<img src="logo.png" class="img-fluid mb-3" alt="Logo de l 'entreprise">
+				<h1 class="mb-0 " style="color: red;">{{ offre.getTitre()}}</h1>
+				<h4>{{offre.getIdEntreprise().getNom()}}</h4>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<form method="post" action="{{ path('app_postuler_candidater', {'idOffre': offre.id}) }}" enctype="multipart/form-data">
+			<div class="row justify-content-center align-items-center">
+				<div class="col-md-5">
+					<div class="form-group">
+						<label class="h5" for="cv_choice">Choisissez votre CV :</label>
+						<div id="cv_choice">
+							<div class="form-check d-flex justify-content-between">
+								{% if app.user.Cv %}
+									<div>
+										<input class="form-check-input" type="radio" name="cv_choice" id="cv_exist" value="cv_exist" required>
+										<label class="form-check-label" for="cv_exist">
+											Utiliser le CV existant
+										</label>
+									</div>
+									<div>
+										<a href="{{ asset('fichiers/candidat/cv/' ~ app.user.CV) }}" target="_blank" class="pdf-link">
+											Voir le CV
+										</a>
+									</div>
+								{% else %}
+									<h6>Aucun Cv Disponible</h6>
+								{% endif %}
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="cv_choice" id="new_cv" value="new_cv">
+								<label class="form-check-label" for="new_cv">
+									Importer un nouveau CV
+								</label>
+								<input type="file" class="btn form-control" id="cv" name="cv" accept=".pdf, .doc, .docx">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-5">
+					<div class="form-group">
+						<label class="h5" for="lm_choice">Choisissez votre Lettre de motivation :</label>
+						<div id="lm_choice">
+							<div class="form-check d-flex justify-content-between">
+								{% if app.user.LettreDeMotivation %}
+									<div>
+										<input class="form-check-input" type="radio" name="lm_choice" id="lm_exist" value="lm_exist">
+										<label class="form-check-label" for="lm_exist">
+											Utiliser la lettre existante
+										</label>
+									</div>
+									<div>
+										<a href="{{ asset('fichiers/candidat/lm/' ~ app.user.LettreDeMotivation) }}" target="_blank" class="pdf-link">
+											Voir la lettre
+										</a>
+									</div>
+								{% else %}
+									<h6>Aucune Lettre Disponible</h6>
+								{% endif %}
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="lm_choice" id="new_lm" value="new_lm">
+								<label class="form-check-label" for="new_lm">
+									Importer une nouvelle lettre
+								</label>
+								<input type="file" class="btn form-control" id="lm" name="lm" accept=".pdf, .doc, .docx">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-10 mt-2 amber-bg rounded p-4 shadow">
+					<div class="form-group">
+						<label class="accordion-button" type="button">Ajouter un message au recruteur ?</label>
+						<br>
+						<textarea class="form-control" id="message" name="message" rows="3" placeholder="Entrez votre message"></textarea>
+					</div>
+				</div>
+
+				{% if not dejaPostule %}
+					<div class="col-md-10 mb-5">
+						<button type="submit" class="btn-valider btn-primary mt-4">Envoyer la candidature</button>
+					</div>
+				{% else %}
+					<div class="col-md-10 mt-5 mb-5">
+						<h6>
+							Vous avez déja postuler à cette offre
+						</h6>
+					</div>
+				{% endif %}
+			</div>
+		</form>
+
+
+	</div>
+
+
+	{% include "boutDeCode/_modalAjoutCvLm.html.twig" %}
+
+	<script>
+		var app = {
+user: {
+CV: "{{ app.user.CV ?? '' }}",
+LM: "{{ app.user.LettreDeMotivation?? '' }}"
+}
+};
+	</script>
+
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets\css\detailO_candidat.css') }}">
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid py-3">
+		<div class="row align-items-center">
+			<div class="col text-right">
+				<a href="{{ path('offres_index') }}" class="btn btn-primary return-button btn-annuler">Retour à la liste des offres</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container d-flex justify-content-center align-items-center">
+		<div class="row justify-content-center">
+			<div class="col-md-12">
+				{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="alert alert-{{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container-fluid shadow">
+		<div class="row justify-content-center">
+			<div class="col-md-8 mb-5">
+				<div class="card amber-bg">
+					<div class="card-body">
+						<div class="container">
+							<div class="row justify-content-end">
+								<div class="col-auto">
+									{% if not dejaPostule %}
+										<a href="{{ path('app_postuler_offre' , {'idOffre': offre.getId()})}}" class="btn btn-primary btn-valider">
+											Postuler
+											<i class="fas fa-chevron-right ml-1"></i>
+										</a>
+									{% else %}
+										<h6>
+											Vous avez déja postuler à cette offre
+										</h6>
+									{% endif %}
+
+								</div>
+							</div>
+						</div>
+
+						<h3 class="card-title" style="color: red;">{{ offre.getTitre()}}</h3>
+						<h6 class="card-text">Ref.Esa :
+							{{ offre.getId() }}</h6>
+						<h4>{{ offre.idEntreprise.getNom()}}</h4>
+						<ul>
+							<li>
+								<p>Type de Contrat :
+									{{ offre.getTypeContrat() }}</p>
+							</li>
+							<li>
+								<p>Salaire :
+									{{ offre.getSalaire() }}
+									Euros</p>
+							</li>
+							<li>
+								<p>Nombres d'heures :
+									{{ offre.getNbHeure() }}
+									Heures</p>
+							</li>
+							<li>
+								<p>Nombres d'années d'expériences :
+									{{ offre.getExperienceMin() }}
+									an(s)</p>
+							</li>
+							<li>
+								<p>Niveau d'étude minimum :
+									{{ offre.getEtudeMin() }}</p>
+							</li>
+						</ul>
+
+						<h6>Publiée le
+							{{ offre.getDateCreation()|date('d/m/Y') }}</h6>
+
+						<h5 class="mt-2">Descriptif du poste</h5>
+						<p>{{ offre.getDescription() }}</p>
+
+						<h5 class="mt-1">Profil recherché</h5>
+						<p>{{ offre.getPrerequis() }}</p>
+
+						<h5 class="mt-4">Entreprise</h5>
+						<p>{{ offre.idEntreprise.getDescription() }}</p>
+						<br>
+						<a href="{{path('app_candidatures')}}" class="btn btn-primary text-center btn-valider">Retrouvez vos candidatures</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

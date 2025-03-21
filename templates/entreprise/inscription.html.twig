@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription Entreprise{% endblock %}
+
+{% block body %}
+
+
+    <div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #D43A3A;">
+        <h1 class="text-center fs-1 fs-md-2 fs-lg-3 fs-xl-4 fw-bold">Inscription Entreprise</h1>
+    </div>
+
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-12 col-md-9 col-lg-8 mx-auto"> <!-- Ajustement pour un formulaire plus large -->
+                <div class="shadow p-4 mb-5 bg-body rounded">
+
+                    {{ form_start(form) }}
+                        <!-- Vos champs de formulaire ici -->
+                        <div class="mb-3">
+                            <label for="civilite" class="form-group">Civilité : <span class="required">*</span></label>
+                            {{ form_widget(form.civilite, {'attr': {'class': 'form-select'}}) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="nom" class="form-group">Nom : <span class="required">*</span></label>
+                            {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.nom) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="prenom" class="form-group">Prénom : <span class="required">*</span></label>
+                            {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.prenom) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="telephone" class="form-group">Téléphone : <span class="required">*</span></label>
+                            {{ form_widget(form.entreprise.telephone, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.entreprise.telephone) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-group">Email : <span class="required">*</span></label>
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="motdepasse" class="form-group">Mot de passe : <span class="required">*</span></label>
+                            {{ form_widget(form.password.first, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.password.first) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmation" class="form-label">Confirmation : <span class="required">*</span></label>
+                            {{ form_widget(form.password.second, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.password.second) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="fonction" class="form-group">Fonction dans l'entreprise : <span class="required">*</span></label>
+                            {{ form_widget(form.post, {'attr': {'class': 'form-select'}}) }}
+                            {{ form_errors(form.post) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="tel2" class="form-group">Numéro de téléphone 2 :</label>
+                            {{ form_widget(form.entreprise.telephone2, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.entreprise.telephone2) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="entreprise" class="form-group">Nom d'entreprise : <span class="required">*</span></label>
+                            {{ form_widget(form.entreprise.nom, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.entreprise.nom) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="siret" class="form-group">SIRET : <span class="required">*</span></label>
+                            {{ form_widget(form.entreprise.siret, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.entreprise.siret) }}
+                        </div>
+                        <div class="mb-3">
+                            <label for="codeNAF" class="form-group">Code NAF : <span class="required">*</span></label>
+                            {{ form_widget(form.entreprise.code_naf, {'attr': {'class': 'form-control'}}) }}
+                            {{ form_errors(form.entreprise.code_naf) }}
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="numero" class="form-label">Numéro : <span class="required">*</span></label>
+                                {{ form_widget(form.adresse.numero, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.adresse.numero) }}
+                            </div>
+                            <div class="col-md-10 mb-3">
+                                <label for="adresse" class="form-label">Adresse : <span class="required">*</span></label>
+                                {{ form_widget(form.adresse.adresse, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.adresse.adresse) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2 mb-3">
+                                <label for="codepostal" class="form-label">Code Postal : <span class="required">*</span></label>
+                                {{ form_widget(form.adresse.code_postal, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.adresse.code_postal) }}
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="ville" class="form-label">Ville : <span class="required">*</span></label>
+                                {{ form_widget(form.adresse.ville, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.adresse.ville) }}
+                            </div>
+                            <div class="col-md-5 mb-3">
+                                <label for="pays" class="form-label">Pays : <span class="required">*</span></label>
+                                {{ form_widget(form.adresse.pays, {'attr': {'class': 'form-control'}}) }}
+                                {{ form_errors(form.adresse.pays) }}
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description : <span class="required">*</span></label>
+                            {{ form_widget(form.entreprise.description, {'attr': {'class': 'form-control', 'rows': '4'}}) }}
+                            {{ form_errors(form.entreprise.description) }}
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                {{ form_widget(form.submit, {'attr': {'class': 'btn-valider me-3'}}) }}
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center">
+            Vous avez déjà un compte ? <a href="{{ path('connexion') }}" class="link-danger">Se connecter</a>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+
+

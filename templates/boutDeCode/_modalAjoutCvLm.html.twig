@@ -1,0 +1,54 @@
+<!-- Modal pour le formulaire de téléchargement du CV -->
+    <div class="modal fade" id="cvModal" tabindex="-1" role="dialog" aria-labelledby="cvModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="cvModalLabel">Télécharger votre CV</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="cvForm" method="post" action="" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="cv_file">Donnez un nom à votre Cv:</label>
+                            <input type="text" class="form-control" id="cv_file" name="cv_file">
+                        </div>
+                        <div class="form-group">
+                            <label for="cv_file">Choisissez votre CV :</label>
+                            <input type="file" class="form-control" id="cv_file" name="cv_file">
+                        </div>
+                        <br/>
+                        <button type="submit" class="btn-valider btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal pour le formulaire de téléchargement de la lettre-->
+    <div class="modal fade" id="lettreModal" tabindex="-1" role="dialog" aria-labelledby="cvModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="cvModalLabel">Télécharger votre Lettre de Motivation</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="cvForm" method="post" action="" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="cv_file">Donnez un nom à votre Lettre</label>
+                            <input type="text" class="form-control" id="cv_file" name="cv_file">
+                        </div>
+                        <div class="form-group">
+                            <label for="cv_file">Choisissez votre Lettre :</label>
+                            <input type="file" class="form-control" id="cv_file" name="cv_file">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn-valider btn-primary">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+

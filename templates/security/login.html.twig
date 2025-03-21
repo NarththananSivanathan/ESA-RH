@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	<form method="POST">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		{% endif %}
+
+{#		{% if app.user %}#}
+{#			<div class="mb-3">#}
+{#				Vous êtes déja connecter#}
+{#				{{ app.user.userIdentifier }},#}
+{#				<a href="{{ path('deconnexion') }}">Déconnexion</a>#}
+{#			</div>#}
+{#		{% endif %}#}
+
+
+		<div class="d-flex justify-content-center align-items-center text-white" style="height: 90px; background-color: #D43A3A;">
+			<h1 class="text-center fs-1 fs-md-2 fs-lg-3 fs-xl-4 fw-bold">Connexion</h1>
+		</div>
+
+		<div class="container my-5">
+			<div class="row">
+				<div
+					class="col-12 col-md-9 col-lg-8 mx-auto">
+					{% for label,messages in app.flashes %}
+						{% for message in messages %}
+							<div class="alert alert-{{ label }}">
+								{{ message }}
+							</div>
+						{% endfor %}
+					{% endfor %}
+					<!-- Ajustement pour un formulaire plus large -->
+					<div class="shadow p-4 mb-5 bg-body rounded">
+						<div class="mb-3">
+							<label for="email" class="form-group">Email:</label>
+							<input input type="email" value="{{ last_username }}" name="email" id="email" class="form-control" autocomplete="email" required autofocus>
+						</div>
+						<div class="mb-3">
+							<label for="password" class="form-group">Mot de passe:</label>
+							<input type="password" name="_password" id="password" class="form-control" required>
+						</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<div class="d-flex align-items-center">
+							<button type="submit" class="btn-valider me-3">Connextion</button>
+						</div>
+						<div class="text-center">
+							<a href="#" class="link-danger">Mot Passe Oublié</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center">
+				Crée un compte ?
+				<a class="link-danger" data-bs-toggle="modal" data-bs-target="#myModal">S'inscrire</a>
+			</div>
+		</div>
+	</form>
+{% endblock %}

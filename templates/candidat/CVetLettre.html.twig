@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/cvetlettreCandidat.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="col mx-auto text-center shadow">
+        <div class="p-3" style="text-decoration: underline; color: red;">
+            <h2>Consulter vos documents </h2>
+        </div>
+    </div>
+
+    <br><br>
+
+    <div class="container">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <div class="row gx-5">
+                <div class="col-md-6">
+                    <div class="p-4 mb-4 bg-white rounded shadow h-100 w-100">
+                        <h4 class="text-center">Votre CV</h4>
+                        {% if candidat.cv %}
+                            <a href="{{ asset('fichiers/candidat/cv/' ~ candidat.cv) }}" target="_blank" class="pdf-link">
+                                <i class="fas fa-file-pdf pdf-icon"></i> Voir le CV
+                            </a>
+                        {% else %}
+                            <p>Aucun CV disponible</p>
+                        {% endif %}
+                        <form method="post" action="{{ path('modifier_cv') }}" enctype="multipart/form-data">
+                            <div class="d-grid gap-2">
+                                <input type="file" name="cv" class="btn btn-secondary form-control " accept=".pdf, .doc, .docx" />
+                                <button class="btn btn-annuler" type="submit">Modifier</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 mb-4 bg-white rounded shadow h-100 w-100">
+                        <h4 class="text-center">Votre Lettre de Motivation</h4>
+                        {% if candidat.lettreDeMotivation %}
+                            <a href="{{ asset('fichiers/candidat/lm/' ~ candidat.lettreDeMotivation) }}" target="_blank" class="pdf-link">
+                                <i class="fas fa-file-pdf pdf-icon"></i> Voir la lettre de motivation
+                            </a>
+                        {% else %}
+                            <p>Aucune Lettre disponible</p>
+                        {% endif %}
+                        <form method="post" action="{{ path('modifier_lettre_motivation') }}" enctype="multipart/form-data">
+                            <div class="d-grid gap-2">
+                                <input type="file" name="lettre_motivation"class="btn btn-secondary form-control" accept=".pdf, .doc, .docx" />
+                                <button class="btn btn-annuler" type="submit">Modifier</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+

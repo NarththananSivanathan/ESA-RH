@@ -4,14 +4,45 @@ security:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+#        users_in_memory: { memory: null }
+        app_candidat_provider:
+            entity:
+                class: App\Entity\Candidat
+                property: email
+        app_recruteur_provider:
+            entity:
+                class: App\Entity\Recruteur
+                property: email
+        app_user_provider:
+            chain:
+                providers: [app_candidat_provider, app_recruteur_provider]
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
+        utilisateur:
+#            user_checker: App\Security\RecruteurChecker
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
+            logout:
+                path: deconnexion
+                # where to redirect after logout
+                # target: app_any_route
+                # where to redirect after logout
+                # target: app_any_route
+
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                path: /
+                always_remember_me: true
+
+            form_login:
+                login_path: connexion
+                check_path: connexion
+                enable_csrf: true
+                username_parameter: email
+                default_target_path: connexion
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -19,11 +50,15 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
+
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+#        - { path: ^/admin, roles: ROLE_ADMIN }
+#        - { path: ^/profile, roles: ROLE_USER }
+#        - { path: ^/inscription-candidat, roles: PUBLIC_ACCESS }
+        - { path: ^/entreprise/*, roles: ROLE_RECRUTEUR }
+        - { path: ^/candidat/*, roles: ROLE_CANDIDAT }
 
 when@test:
     security:

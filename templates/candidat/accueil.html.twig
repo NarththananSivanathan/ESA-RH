@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/accueil_candidats.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <Style>
+        .zoom-on-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+    </Style>
+
+    <div class="container text-center">
+        <h1 class="mt-5 "style="text-decoration: underline; color: red;">Accueil</h1><br><br>
+    </div>
+
+    <div class="container mt-3">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow h-100 text-center zoom-on-hover">
+                    <div class="card-body p-4">
+                        <a href="{{ path('offres_index') }}" class="pages d-block text-danger mb-3">
+                            <i class="fas fa-search fa-2x"></i> Mes recherches
+                        </a>
+                        <p class="card-text mb-3">Ne ratez plus aucune opportunité !</p>
+                        <p class="card-text">
+                            Gérez facilement vos recherches d'emploi et ne ratez plus aucune opportunité. Accédez rapidement et efficacement aux offres qui correspondent à vos critères.
+                        </p>
+                        <a href="{{ path('offres_index') }}" class="btn btn-primary" style="background-color:#ff4d4d">Gérer mes recherches</a>
+                    </div>
+                </div>
+            </div>
+            {# <div class="col-md-6">
+                <div class="card shadow h-100 text-center zoom-on-hover">
+                    <div class="card-body p-4">
+                        <a href="{{ path('app_heart') }}" class="pages d-block text-danger mb-3">
+                            <i class="fas fa-star fa-2x"></i> Favoris
+                        </a>
+                        <p class="card-text">
+                            Retrouvez et gérez facilement les offres d'emploi qui vous intéressent le plus. Gardez un œil sur les opportunités qui pourraient correspondre à votre projet professionnel.
+                        </p>
+                    </div>
+                </div>
+            </div> #}
+            <div class="col-md-4">
+                <div class="card shadow h-100 text-center zoom-on-hover">
+                    <div class="card-body p-4">
+                        <a href="{{ path('app_candidatures') }}" class="pages d-block text-danger mb-3">
+                            <i class="far fa-file-alt fa-2x"></i> Mes candidatures
+                        </a>
+                        <p class="card-text mb-3">Suivez vos candidatures en un seul endroit.</p>
+                        <p class="card-text">
+                            Consultez et suivez l'évolution de vos candidatures en un seul endroit. Gardez une trace de vos postulations et soyez informé des éventuelles mises à jour.
+                        </p>
+                        <a href="{{ path('app_candidatures') }}" class="btn btn-primary" style="background-color:#ff4d4d">Voir mes candidatures</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow h-100 text-center zoom-on-hover">
+                    <div class="card-body p-4">
+                        <a href="{{ path('app_cv') }}" class="pages d-block text-danger mb-3">
+                            <i class="fas fa-file-pdf fa-2x"></i> Mes CV et lettres de motivation
+                        </a>
+                        <p class="card-text mb-3">Gérez vos documents à portée de main.</p>
+                        <p class="card-text">
+                            Gérez et mettez à jour facilement vos CV et lettres de motivation. Ayez constamment vos documents à portée de main et adaptez-les en fonction des offres qui vous intéressent.
+                        </p>
+                        <a href="{{ path('app_cv') }}" class="btn btn-primary" style="background-color:#ff4d4d">Gérer mes documents</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br><br> 
+
+
+{% endblock %}

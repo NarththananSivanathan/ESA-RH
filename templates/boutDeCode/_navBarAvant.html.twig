@@ -1,0 +1,31 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="assets/css/navbar.css">
+{% endblock %}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <div class="">
+            <a href="#" class="navbar-brand">
+                <img src="{{asset('assets/images/ESA-RH-Logo.png')}}" alt="Logo" width="130" class="img-fluid">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('connexion') }}">
+                        <button type="button" class="btn btn-valider btn-dark">Se connecter</button>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="modal" data-bs-target="#myModal">
+                        <button type="button" class="btn btn-valider btn-dark">S'inscrire</button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

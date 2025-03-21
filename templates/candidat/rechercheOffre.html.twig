@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('assets/css/recherche_candidat.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="p-3 text-center" style="text-decoration: underline; color: red;">
+		<h3>Recherche d'offres</h3>
+	</div>
+
+	<section class="filters text-center">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="shadow p-4">
+						<form id="job-search-form" action="{{ path('offres_recherche') }}">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="keyword"></label>
+										<input type="text" id="keyword" name="keyword" class="form-control" placeholder="Entrez un mot-clé">
+									</div>
+								</div>
+								{# <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="location"></label>
+                                        <input type="text" id="location" name="location" class="form-control" placeholder="Entrez un lieu">
+                                    </div>
+                                </div> #}
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="contract-type"></label>
+										<select id="contract-type" name="typeContrat" class="form-control" placeholder="Choisissez un type de contrat">
+											<option value="">Choisir...</option>
+											<option value="cdi">CDI</option>
+											<option value="cdd">CDD</option>
+											<option value="stage">Stage</option>
+											<option value="alternance">Alternance</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="" class="btn btn-primary mt-4 btn-annuler">Rechercher</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<br><br>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<section class="results">
+					<div class="p-3 text-center" style="text-decoration: underline; color: red;">
+						<h3>Résultats</h3>
+					</div>
+					<ul id="job-results" class="list-group">
+						{% for offre in offres %}
+							<li class="list-group-item shadow mb-5" style="text-align: left;;">
+								<img src="chemin_vers_votre_logo.png" alt="Logo de l entreprise">
+								<h5>{{ offre.idEntreprise.getNom() }}</h5>
+								<h3 class="red-text" style="color: red;">{{ offre.getTitre() }}</h3>
+								<p>
+									{{ offre.getDescription() }}
+								</p>
+								<h5>{{ offre.getSalaire()}}</h5>
+								<a href="{{ path('offres_details', {'id': offre.getId()}) }}" class="btn btn-valider mb-3">Postuler</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
+
+</div>{% endblock %}

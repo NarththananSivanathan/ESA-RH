@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets\css\detailC_candidat.css') }}">
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container-fluid py-3">
+        <div class="row align-items-center">
+            <div class="col text-right">
+				<a href="{{ path('app_candidatures') }}" class="btn btn-primary return-button btn-annuler">Retour vers les candidatures</a>
+			</div>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-auto text-center">
+            <h2 style="text-decoration: underline; color:red;">Détail de la candidature</h2>
+        </div>
+    </div>
+
+    <Br>
+    <div class="container amber-bg shadow">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                </Br>
+                <h4 style="text-decoration: underline;">VOTRE CANDIDATURE</h4>
+                <p><strong>Date d'envoi de la candidature :</strong> {{candidature.dateCandidature|date('d/m/Y')}}</p>
+
+                <hr><br>
+
+                <h4 style="text-decoration: underline;">RAPPEL DE L'OFFRE SÉLECTIONNÉE</h4>
+                <ul class="list-unstyled">
+                    <li><strong>Titre du poste :</strong> {{candidature.idOffre.titre}} </li>
+                    <li><strong>Société :</strong> {{candidature.idOffre.idEntreprise.nom}} </li>
+                    <li><strong>Type de contrat :</strong> {{candidature.idOffre.typeContrat}}</li>
+                    <li><strong>Salaire :</strong> {{candidature.idOffre.salaire}}€ brut annuel</li>
+                    <li><strong>Expérience :</strong> {{candidature.idOffre.experienceMin}} an(s)</li>
+                </ul>
+
+                <hr><br>
+
+                <h4 style="text-decoration: underline;">DÉTAIL DE L'OFFRE</h4>
+                <p>{{candidature.idOffre.description}}</p>
+                <p>{{candidature.idOffre.prerequis}}</p>
+                <hr><br>
+
+                <h4 style="text-decoration: underline;">RAPPEL DU DOSSIER DE CANDIDATURE ADRESSÉ</h4>
+                <ul class="list-unstyled">
+                    <li><strong>CV attaché :</strong> <a href="{{ asset('fichiers/candidature/cv/' ~ candidature.cv) }}">CV</a></li>
+                    {% if candidature.lettreDeMotivation %}
+                    <li><strong>LM attaché :</strong> <a href="{{ asset('fichiers/candidature/cv/' ~ candidature.lettreDeMotivation) }}">Lettre de Motivation</a></li>
+                    {% endif %} 
+                </ul>
+            </div>
+        </div>
+    </div>
+    </Br></Br>
+
+
+
+
+
+
+
+
+{% endblock %}

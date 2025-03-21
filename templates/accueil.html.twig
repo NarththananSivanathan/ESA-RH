@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ESA
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('assets/css/accueil.css') }}">
+{% endblock %}
+
+{% block body %}
+
+	<main>
+		<div class="position-relative text-center mb-5">
+			<img src="{{ asset('assets/images/home2.jpg') }}" class="img-fluid" alt="image" style="width: 1300px; height: 300px;">
+			<div class="position-absolute top-50 start-50 translate-middle text-white">
+				<h1 class="fw-bold">Donner de l'élan à votre avenir</h1>
+				<p class="fw-bold">Avec nos 500 consultants partout en France et nos services en ligne</p>
+			</div>
+		</div>
+
+		<section class="container">
+			<div class="row">
+				<div>
+					<h2 class="text-center titre">Nos offres d'emplois</h2>
+				</div>
+				<div class="row">
+					{% for offre in offres %}
+						<div class="col-md-3 mb-4">
+							<a class="versdetail" href="{{ path('offres_details', {'id': offre.getId()}) }}">
+								<div class="offer-card shadow p-4">
+									<h3>{{ offre.titre }}</h3>
+									{#<p class="info">{{ offre.lieu }}</p>#}
+									<p class="info">{{ offre.typeContrat }}</p>
+									<p class="date">{{ offre.dateCreation|date('d/m/Y') }}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+				<div>
+					<p class="see-all text-center">
+						<a class="lien" href="{{path('offres_index')}}">Voir toutes les offres</a>
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="container">
+			<div class="row offer-grid">
+				<div>
+					<h2 class="text-center" style="text-decoration: underline; color: red;">Nos entreprises</h2>
+				</div>
+
+				{% for entreprise in entreprises %}
+
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="offer-card shadow p-4">
+							<img src="{{ asset('images/logo.png') }}" alt="Logo de l'entreprise" class="offer-logo">
+							<h2>{{ entreprise.nom }}</h2>
+							{#<p class="info">{{ entreprise.localisation }}</p>#}
+						</div>
+					</div>
+				{% endfor %}
+
+				<div>
+					<p class="see-all text-center">
+						<a class="lien" href="{{path('lesentreprises')}}">Voir toutes les entreprises</a>
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
