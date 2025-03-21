@@ -1,134 +1,73 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ESA{% endblock %}
+{% block title %}ESA
+{% endblock %}
 
 {% block stylesheets %}
-     {# <link rel="stylesheet" href="{{asset('assets/css/accueil.css') }}"> #}
-    {# <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"> #}
+	<link rel="stylesheet" href="{{asset('assets/css/accueil.css') }}">
 {% endblock %}
 
 {% block body %}
 
-    <div class="position-relative text-center">
-        <img src="{{ asset('assets/images/home2.jpg') }}" class="img-fluid" alt="image" style="width: 1300px; height: 300px;">
-        <div class="position-absolute top-50 start-50 translate-middle text-white">
-            <h1 class="fw-bold" >Donner de l'élan à votre avenir</h1>
-            <p class="fw-bold" >Avec nos 500 consultants partout en France et nos services en ligne</p>
-        </div>
-    </div>
+	<main>
+		<div class="position-relative text-center mb-5">
+			<img src="{{ asset('assets/images/home2.jpg') }}" class="img-fluid" alt="image" style="width: 1300px; height: 300px;">
+			<div class="position-absolute top-50 start-50 translate-middle text-white">
+				<h1 class="fw-bold">Donner de l'élan à votre avenir</h1>
+				<p class="fw-bold">Avec nos 500 consultants partout en France et nos services en ligne</p>
+			</div>
+		</div>
 
+		<section class="container">
+			<div class="row">
+				<div>
+					<h2 class="text-center titre">Nos offres d'emplois</h2>
+				</div>
+				<div class="row">
+					{% for offre in offres %}
+						<div class="col-md-3 mb-4">
+							<a class="versdetail" href="{{ path('offres_details', {'id': offre.getId()}) }}">
+								<div class="offer-card shadow p-4">
+									<h3>{{ offre.titre }}</h3>
+									{#<p class="info">{{ offre.lieu }}</p>#}
+									<p class="info">{{ offre.typeContrat }}</p>
+									<p class="date">{{ offre.dateCreation|date('d/m/Y') }}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				</div>
+				<div>
+					<p class="see-all text-center">
+						<a class="lien" href="{{path('offres_index')}}">Voir toutes les offres</a>
+					</p>
+				</div>
+			</div>
+		</section>
 
-    <br><br>
+		<section class="container">
+			<div class="row offer-grid">
+				<div>
+					<h2 class="text-center" style="text-decoration: underline; color: red;">Nos entreprises</h2>
+				</div>
 
+				{% for entreprise in entreprises %}
 
-    <style>
-        .offer-card {
-            transition: transform 0.3s ease;
-        }
+					<div class="col-md-6 col-lg-3 mb-4">
+						<div class="offer-card shadow p-4">
+							<img src="{{ asset('images/logo.png') }}" alt="Logo de l'entreprise" class="offer-logo">
+							<h2>{{ entreprise.nom }}</h2>
+							{#<p class="info">{{ entreprise.localisation }}</p>#}
+						</div>
+					</div>
+				{% endfor %}
 
-        .offer-card:hover {
-            transform: scale(1.1);
-        }
-    </style>
-
-    <div class="container">
-        <h2 class="text-center" style="text-decoration: underline; color: red;">Nos offres d'emplois</h2><br><br>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12 col-lg-6 mb-4">
-                        <div class="offer-card shadow">
-                            <h3>Stage Lead Web Développeur H/F</h3>
-                            <p class="info">Paris - 75</p>
-                            <p class="info">6 mois</p>
-                            <p class="date">05/07/24</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-lg-6 mb-4">
-                        <div class="offer-card shadow">
-                            <h3>Alternance système Réseau H/F</h3>
-                            <p class="info">Paris la Défense</p>
-                            <p class="info">1 année</p>
-                            <p class="date">04/03/24</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12 col-lg-6 mb-4">
-                        <div class="offer-card shadow">
-                            <h3>Stage Lead Web Développeur H/F</h3>
-                            <p class="info">Paris - 75</p>
-                            <p class="info">6 mois</p>
-                            <p class="date">012/01/24</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-lg-6 mb-4">
-                        <div class="offer-card shadow">
-                            <h3>Alternance Web Développeur H/F</h3>
-                            <p class="info">Melun - 77</p>
-                            <p class="info">2 années</p>
-                            <p class="date">05/07/24</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <p class="see-all text-center"><a href="#">Voir toutes les offres</a></p>
-    </div>
-
-    <br><br><br>
-
-    <div class="container ">
-        <div class="header">
-            <h2 class="text-center" style="text-decoration: underline; color: red;">Differentes entreprises</h2><br><br>
-            <div class="row offer-grid">
-            
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="offer-card shadow">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo de l'entreprise" class="offer-logo">
-                        <h2>Esic</h2>
-                        <p class="info">Paris - 75</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="offer-card shadow">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo de l'entreprise" class="offer-logo">
-                        <h2>Total e&p Congo</h2>
-                        <p class="info">Paris la defense</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="offer-card shadow">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo de l'entreprise" class="offer-logo">
-                        <h2>MGH cooperation</h2>
-                        <p class="info">Corbeil-essone</p>
-                    </div>
-                </div>
-
-                <div class="col-md-6 col-lg-3 mb-4">
-                    <div class="offer-card shadow">
-                        <img src="{{ asset('images/logo.png') }}" alt="Logo de l'entreprise" class="offer-logo">
-                        <h2>BNP paribas</h2>
-                        <p class="info">Melun - 77</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        <p class="see-all text-center"><a href="#">Voir toutes les offres</a></p>
-    </div>
-
-    <br><br>
-
-
-
-{% endblock %} 
-
-
+				<div>
+					<p class="see-all text-center">
+						<a class="lien" href="{{path('lesentreprises')}}">Voir toutes les entreprises</a>
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+{% endblock %}
